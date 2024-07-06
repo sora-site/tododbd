@@ -54,6 +54,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'rubocop', require: false
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
 
@@ -70,3 +71,6 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem 'pry-rails'
+gem 'devise'
