@@ -1,0 +1,36 @@
+.simple-calendar {
+  .day {
+    background: #fff9ee;
+  }
+  .wday-0 {
+    background: #ffeaea;
+    color: #ff505c;
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {
+    background: #d4ebff;
+    color: #5984dc;
+  }
+  .today {
+    background: #FFA0A0;
+  }
+  .past {}
+  .future {}
+  .start-date {}
+  .prev-month {
+    /* 前月のセルを非活性 */
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .next-month {
+    /* 前月のセルを非活性 */
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .current-month {}
+  .has-events {}
+}
