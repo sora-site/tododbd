@@ -9,7 +9,7 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-9 col-lg-7 col-xl-6">
           <div class="card" style="border-radius: 15px;">
-            <div class="card-body p-5">
+            <div class="signup-form-wrapper card-body p-5">
               <h2 class="text-uppercase text-center mb-5">新規登録</h2>
 
               <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
@@ -57,14 +57,14 @@
                 </div> %>
 
                 <div class = "have-account">
-                <p class="text-center text-muted mt-5 mb-0">すでにアカウントをお持ちの場合は
-                  <a href="#!"
-                    class="fw-bold text-body"><u>ログイン</u>
-                  </a>してください </p>
+                <p class="text-center text-muted mt-5 mb-0">
+                  すでにアカウントをお持ちの場合は
+                  <%=link_to 'ログイン', new_user_session_path, class:"fw-bold text-body" %>
+                  してください </p>
                 </div>
 
                 <div class='register-btn'>
-                  <%= f.submit "会員登録" ,class:"register-red-btn" %>
+                  <%= f.submit "会員登録" ,class:"light-blue-btn" %>
                 </div>
 
               <% end %>
