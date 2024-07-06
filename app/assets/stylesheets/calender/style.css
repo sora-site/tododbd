@@ -1,3 +1,7 @@
+.calender_wrapper{
+  overflow: hidden;
+}
+
 .simple-calendar {
   .day {
     background: #fff9ee;
@@ -33,4 +37,23 @@
   }
   .current-month {}
   .has-events {}
+}
+
+.table-striped{
+  table-layout: fixed;
+  width: 100%;
+  height: calc(100vh - (50px + 50px + 50px + 10px));
+}
+
+.calendar-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 50px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.calendar-title{
+
 }

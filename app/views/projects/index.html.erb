@@ -1,8 +1,7 @@
 <%= render "shared/header" %>
 
-<%= month_calendar do |date| %>
-
-<%= link_to new_user_session_path do %>
-  <%= date.day %>
-  <%end%>
-<% end %>
+<body class = "calender_wrapper">
+<div class = "calender" id="calendar">
+    <%= render "shared/calender" %>
+  </div>
+</body>
