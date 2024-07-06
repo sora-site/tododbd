@@ -1,0 +1,15 @@
+/*
+################################################
+	共通部品用css
+################################################
+*/
+
+.light-blue-btn {
+  width: 100%;
+  background: #8aa1e7;
+  border: 1px solid #8aa1e7;
+  color: #fff;
+  line-height: 48px;
+  font-size: 14px;
+  cursor: pointer;
+}
