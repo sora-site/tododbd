@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
+  belongs_to :project
   has_many :things
+
   accepts_nested_attributes_for :things,
                                 allow_destroy: true,
                                 reject_if: proc { |attributes|

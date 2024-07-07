@@ -1,3 +1,3 @@
 class Thing < ApplicationRecord
-  belong_to :task
+  belongs_to :task
 end
