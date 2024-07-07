@@ -1,0 +1,59 @@
+.calender_wrapper{
+  overflow: hidden;
+}
+
+.simple-calendar {
+  .day {
+    background: #fff9ee;
+  }
+  .wday-0 {
+    background: #ffeaea;
+    color: #ff505c;
+  }
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {
+    background: #d4ebff;
+    color: #5984dc;
+  }
+  .today {
+    background: #FFA0A0;
+  }
+  .past {}
+  .future {}
+  .start-date {}
+  .prev-month {
+    /* 前月のセルを非活性 */
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .next-month {
+    /* 前月のセルを非活性 */
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  .current-month {}
+  .has-events {}
+}
+
+.table-striped{
+  table-layout: fixed;
+  width: 100%;
+  height: calc(100vh - (50px + 50px + 50px + 10px));
+}
+
+.calendar-heading{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 50px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+.calendar-title{
+
+}

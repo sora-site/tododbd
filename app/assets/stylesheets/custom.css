@@ -1,0 +1,52 @@
+/*
+################################################
+	bootstrap調整用css
+################################################
+*/
+
+/*############ ヘッダー部分 ############*/
+
+.navbar-toggler {
+  /* # 枠の色 */
+  border-color: lightblue;
+
+  /* # 背景色 */
+  background-color: lightblue;
+}
+
+.navbar-toggler-icon {
+  /* # 三本線の変更 */
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='black' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+
+/*######## 新規登録画面フォーム ########*/
+.form-control {
+  height: 48px;
+}
+
+.signup-form-wrapper {
+  height: 95vh;
+}
+
+.have-account {
+  /* 要素を上移動 */
+  transform: translate(0, -38px);
+}
+
+.register-btn {
+  /* 要素を上移動 */
+  transform: translate(0, -18px);
+}
+
+.registration-main {
+  /* 要素を上移動 */
+  transform: translate(0, -18px)
+}
+
+/* .new-registration {
+  /* スクロールさせない 
+  overflow: hidden;
+} */
+
+/*####### ログインフォーム #######*/

@@ -1,0 +1,4 @@
+.new-session {
+  /* スクロールさせない  */
+  overflow: hidden;
+}

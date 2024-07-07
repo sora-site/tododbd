@@ -10,7 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_06_043859) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_07_025353) do
+  create_table "projects", charset: "utf8", force: :cascade do |t|
+    t.date "registered_date", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "project_name", null: false
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "tasks", charset: "utf8", force: :cascade do |t|
+    t.string "task_name", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+  end
+
+  create_table "things", charset: "utf8", force: :cascade do |t|
+    t.string "thing_name", null: false
+    t.string "persom_name", null: false
+    t.time "start_time", null: false
+    t.time "end_time", null: false
+    t.text "memo", null: false
+    t.integer "status_id", null: false
+    t.bigint "task_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_things_on_task_id"
+  end
+
   create_table "users", charset: "utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -25,4 +55,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_06_043859) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "projects", "users"
+  add_foreign_key "tasks", "projects"
+  add_foreign_key "things", "tasks"
 end

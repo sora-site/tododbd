@@ -74,3 +74,7 @@ end
 
 gem 'pry-rails'
 gem 'devise'
+gem 'bootstrap', '~> 5.2.3'
+gem 'jquery-rails'
+gem 'simple_calendar', '~> 2.0'
+gem 'rails-i18n'
