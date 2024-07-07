@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_06_085506) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_07_025353) do
   create_table "projects", charset: "utf8", force: :cascade do |t|
     t.date "registered_date", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "project_name", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
