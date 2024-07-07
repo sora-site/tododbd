@@ -9,6 +9,10 @@
     <%end%>
     </div>
 
-    <%= link_to_add_association "todoを追加", f, :things,  partial: 'shared/thing_fields'%>
+    <%= link_to_add_association "todoを追加", f, :things,  
+    data: {
+            association_insertion_method: 'append'
+          },
+    partial: 'shared/thing_fields'%>
    
 </div>

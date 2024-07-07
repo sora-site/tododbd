@@ -1,8 +1,12 @@
 <%= render "shared/header" %>
 
+
 <%= form_with model: @project, local: true do |f| %>
-    <%= f.label "プロジェクト名" %>
-    <%= f.text_field :project_name %>
+    <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">プロジェクト</label>
+    <%= f.text_field :project_name , class: "form-control form-control-lg", id: "exampleFormControlInput1" ,placeholder:"例)：3/13のタスク(ルームのタイトルになります、他の人にもわかりやすいプロジェクト名を心がけましょう)"%>
+    </div>
+    <div class="form-wrapper">
     <div id="task-form">
         <%= f.fields_for :tasks do |task| %>
             <%= render "shared/task_fields", f: task %>
@@ -10,7 +14,6 @@
         <div class="links">
           <%= link_to_add_association "タスクを追加", f, :tasks,
              data: {
-             association_insertion_node: '#task-form',
              association_insertion_method: 'append'
             },  partial: 'shared/task_fields' %>
         </div>
@@ -18,4 +21,5 @@
     <div class="actions">
         <%= f.submit "スケジュールを登録"%>
     </div>
+</div>
 <% end %>
