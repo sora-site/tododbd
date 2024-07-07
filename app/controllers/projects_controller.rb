@@ -4,8 +4,13 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @task = @project.task.build
-    @thing = @task.thing.build
+    tasks = @project.tasks.build
+    tasks.things.build
+  end
+
+  def create
+    @project = Project.new(project_params)
+    @project.save
   end
 
   private
