@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_07_050132) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_07_063521) do
   create_table "projects", charset: "utf8", force: :cascade do |t|
-    t.date "registered_date", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "project_name", null: false
+    t.date "registered_date", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -30,7 +30,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_07_050132) do
 
   create_table "things", charset: "utf8", force: :cascade do |t|
     t.string "thing_name", null: false
-    t.string "persom_name"
     t.time "start_time", null: false
     t.time "end_time", null: false
     t.text "memo"
@@ -38,6 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_07_050132) do
     t.bigint "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "person_name"
     t.index ["task_id"], name: "index_things_on_task_id"
   end
 
