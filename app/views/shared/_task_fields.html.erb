@@ -1,4 +1,10 @@
 <div class="nested-fields">
+    <%= link_to_add_association "todoを追加", f, :things, 
+    partial: 'shared/thing_fields', 
+    data: {
+            association_insertion_node: '#thing-form',
+            association_insertion_method: 'append'
+          }%>
     <%= f.label "タスク" %>
     <%= f.text_field :task_name %>
     <%= link_to_remove_association "タスクを削除", f %>
@@ -8,11 +14,5 @@
         <%= render "shared/thing_fields", f: thing %>
     <%end%>
     </div>
-
-    <%= link_to_add_association "todoを追加", f, :things,  
-    data: {
-            association_insertion_method: 'append'
-          },
-    partial: 'shared/thing_fields'%>
    
 </div>
