@@ -7,13 +7,13 @@
         <%= date.day %>
         <%= project.project_name %>
       <% end %>
+    <% end %>
 
-    <%else%>
+    
+  <% end %>
+  
       <%= link_to new_project_path(:date =>date, :params_controller => params[:controller]) do %>
         <%= date.day %>
       <% end %>
-    <% end %>
-
-  <% end %>
   
 <% end %>
