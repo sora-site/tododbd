@@ -1,6 +1,15 @@
-<%= month_calendar do |date| %>
-
-<%= link_to new_project_path do %>
+<%= month_calendar events: collection do |date, project| %>
+  
+ 
+  
   <%= date.day %>
-  <%end%>
+  <% collection.each do |project|%>
+  <% if project.registered_date == date%>
+
+  <%= project.project_name %>
+  <% end %>
+
+  <% end %>
+ 
+
 <% end %>
