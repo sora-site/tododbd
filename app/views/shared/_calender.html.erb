@@ -1,19 +1,23 @@
 <%= month_calendar events: collection do |date, project| %>
 <% project_date = '' %>
+
   <% collection.each do |project|%>
   <% project_date = project.registered_date %>
-    <% if project_date == date%>
+
+    <% if project_date == date %>
       <%= link_to project_path(project.id) do %>
         <%= date.day %>
         <%= project.project_name %>
       <% end %>
+
     <% end %>
 
-    
   <% end %>
-  
+    
+    <% unless project_date == date %>
       <%= link_to new_project_path(:date =>date, :params_controller => params[:controller]) do %>
         <%= date.day %>
       <% end %>
-  
+    <% end %>
+
 <% end %>
