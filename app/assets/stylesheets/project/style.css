@@ -1,0 +1,66 @@
+/*
+################################################
+	projectビューcss
+################################################
+*/
+
+/*############ フォーム全体 ############*/
+.project-forms{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#project-form{
+ width: 1000px;
+}
+
+.nested-fields.task-field{
+  position: relative;
+  margin-top: 40px;
+}
+
+.add_todo.add_fields{
+  position: absolute;
+  right: 155px;
+}
+
+.things-header{
+  display: flex;
+  margin-top: 5px;
+}
+
+.nested-fields.thing-field{
+  display: flex;
+  justify-content: space-between;
+}
+
+/*############ thingヘッダー ############*/
+.head{
+  margin-bottom: 0px;
+  position: relative;
+}
+
+.head.description{
+  position: absolute;
+  right: 753px;
+}
+
+.head.start{
+  position: absolute;
+  right: 207px;
+}
+
+.head.end{
+  position: absolute;
+  right: 112px;
+}
+
+.memo-field{
+  width: 500px; 
+}
+
+/*############ submitボタン ############*/
+.submit-button{
+  margin-top: 20px;
+}
