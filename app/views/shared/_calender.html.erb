@@ -1,7 +1,8 @@
 <%= month_calendar events: collection do |date, project| %>
 <% project_date = '' %>
+<% project_params = collection %>
 
-  <% collection.each do |project|%>
+  <% project_params.each do |project|%>
   <% project_date = project.registered_date %>
 
     <% if project_date == date %>
