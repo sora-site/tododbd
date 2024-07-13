@@ -12,6 +12,8 @@
 
               <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
 
+                <%= render "shared/error_messages", resource: @user %>
+
                 <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form3Example1cg">お名前</label>
                   <%= f.text_area :nickname, class:"form-control form-control-lg", id:"form3Example1cg", placeholder:"ニックネーム可（最大16文字）", maxlength:"16" %>

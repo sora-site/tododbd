@@ -1,7 +1,7 @@
-<nav class="navbar" aria-label="First navbar example" style="background-color:#e3f2fd;">
+<header class='top-page-header'>
+  <nav class="navbar" aria-label="First navbar example" style="background-color:#e3f2fd;" id="nav-header">
     <div class="container-fluid">
       <%= link_to image_tag("furima-logo-color.png", class:"furima-icon"), "/" %>
-      
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,4 +31,15 @@
         </form>
       </div>
     </div>
+    <div class='under-nav'>
+        <ul class='lists-left'>
+          <% if user_signed_in? %>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, data: {turbo_method: :delete}, class: "logout" %></li>
+          <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+          <li><%= link_to '新規登録', new_user_registration_path, class: "sign-up" %></li>
+          <%end%>
+       </ul>
+    </div>
   </nav>
+</header>
