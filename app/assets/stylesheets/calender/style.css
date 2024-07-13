@@ -1,6 +1,12 @@
+/*
+################################################
+	一覧表示画面カレンダー用css
+################################################
+*/
 .calender_wrapper{
   overflow: hidden;
 }
+
 
 .simple-calendar {
   .day {
@@ -52,8 +58,4 @@
   height: 50px;
   margin-top: 50px;
   margin-bottom: 10px;
-}
-
-.calendar-title{
-
 }

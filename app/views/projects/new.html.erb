@@ -1,4 +1,4 @@
-<div class="project-form">
+<div class="project-forms">
 <div class="row g-3" id="project-form">
 <%= form_with model: @project, local: true do |f| %>
     <div class="col-12">
@@ -6,7 +6,7 @@
     <%= f.text_field :project_name , class: "form-control form-control-lg", id: "exampleFormControlInput1" ,placeholder:"例)：3/13のタスク(ルームのタイトルにもなります)"%>
     </div>
         <div class="links">
-          <%= link_to_add_association "タスクを追加", f, :tasks,
+          <%= link_to_add_association "タスクを追加", f, :tasks, class: 'add_tasks',
              data: {
             association_insertion_node: '#task-form',
              association_insertion_method: 'append'
@@ -17,7 +17,7 @@
             <%= render "shared/task_fields", f: task %>
         <% end %>
     </div>
-    <div class="actions">
+    <div class="submit-button">
         <%= f.submit "スケジュールを登録"%>
     </div>
 <% end %>
