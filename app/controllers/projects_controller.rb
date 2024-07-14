@@ -23,15 +23,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @tasks = Task.includes(:project).order('updated_at DESC')
-    @things = Thing.includes(:task).order('start_time DESC')
-
-    @thing_count = []
-    daily_task = Task.where(project_id: params[:id])
-    daily_task.each do |task|
-      count = Thing.where(task_id: task.id).count.to_i
-      @thing_count.push(count)
-    end
+    @tasks = Task.where(project_id: params[:id]).order('updated_at DESC')
+    @things = Thing.includes(@tasks).order('start_time DESC')
   end
 
   private

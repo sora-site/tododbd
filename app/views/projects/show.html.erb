@@ -1,73 +1,27 @@
 <div class="task-list">
-  <table>
-   <tr>
-    <th>タスク</th>
-    <th>対応者</th>
-    <th>内容</th>
-    <th>開始予定</th>
-    <th>終了予定</th>
-    <th>補足</th>
-    <th>ステータス</th>
-  </tr>
-  <tr>
-  <td rowspan="2">買い物</td>
-    <td>a</td>
-    <td>小麦粉</td>
-    <td>9:00</td>
-    <td>12:00</td>
-    <td>○強力粉　×薄力粉</td>
-    <td><label><input type="text" list="status">
-      <datalist id="status">
-        <option value="完了">
-        <option value="実施中">
-        <option value="未着手">
-        <option value="取消">
-      </datalist></label></td>
-  </tr>
-  <tr>
-    <td>a</td>
-    <td>日用品</td>
-    <td>9:00</td>
-    <td>12:00</td>
-    <td>日用品</td>
-    <td><label><select size="1" name="status">
-        <option value="status">完了</option>
-        <option value="status">着手中</option>
-        <option value="status">未着手</option>
-        <option value="status">取消</option>
-     </select>
-  </tr>
-  <tr>
-    <td rowspan="2">荷物受け取り</td>
-    <td>a</td>
-    <td>Macbook Pro</td>
-    <td>12:00</td>
-    <td>15:00</td>
-    <td>パソコン</td>
-    <td><label><input type="text" list="status">
-            <datalist id="status">
-              <option value="完了">
-              <option value="実施中">
-              <option value="未着手">
-              <option value="取消">
-            </datalist></label></td>
-      </tr>
+  <%= form_with model: @thing, local: true do |f| %>
+  <table class="table table-hover">
+    <tr>
+      <th>タスク</th>
+      <th>内容</th>
+      <th>開始予定</th>
+      <th>終了予定</th>
+      <th>補足</th>
+      <th>ステータス</th>
+    </tr>
+    <% @tasks.each do |task| %>
       <tr>
-        <td>a</td>
-        <td>簡易書留</td>
-        <td>14:00</td>
-        <td>16:00</td>
-        <td>クレジットカード</td>
-        <td><label><input type="text" list="status">
-            <datalist id="status">
-              <option value="完了">
-              <option value="実施中">
-              <option value="未着手">
-              <option value="取消">
-            </datalist></label></td>
+        <td rowspan= "<%= task.things.count %>" ><%= task.task_name %></td>
+        <% task.things.each do |thing| %>
+          <td><%= thing.thing_name %></td>
+          <td><%= f.time_field :start_time, value: thing.start_time.strftime("%H:%M") %></td>
+          <td><%= f.time_field :end_time, value: thing.end_time.strftime("%H:%M") %></td>
+          <td><%= thing.memo%></td>
+          <td><%= f.collection_select(:status_id, TaskStatus.all, :id, :name, {include_blank: true, selected: thing.status_id} , {class:"select-box", id:"item-sales-status"}) %></td>
       </tr>
-      <tr>
-        <td colspan="7">残タスク：1/4　やること：残り10件</td>
-      </tr>
-    </table>
-  </div>
+        <% end %>
+    <% end %>
+  </table>
+    <%= f.submit "変更" ,class:"sell-btn" %>
+  <% end %>
+</div> 
