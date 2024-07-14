@@ -5,10 +5,10 @@ class Project < ApplicationRecord
     registered_date
   end
 
-    # バリデーション
-    with_options presence: true do
-      validates :project_name, length: { maximum: 30 }
-    end
+  # バリデーション
+  with_options presence: true do
+    validates :project_name, length: { maximum: 30 }
+  end
 
   accepts_nested_attributes_for :tasks,
                                 allow_destroy: true,
