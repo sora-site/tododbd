@@ -16,6 +16,7 @@
   <% end %>
     
     <% unless project_date == date %>
+    <%# <% コントローラーの処理に渡す日付情報を設定 %>
       <%= link_to new_project_path(date: date, params_controller: params[:controller]) do %>
         <%= date.day %>
       <% end %>
