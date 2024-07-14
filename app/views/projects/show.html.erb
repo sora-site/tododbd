@@ -23,5 +23,6 @@
     <% end %>
   </table>
     <%= f.submit "変更" ,class:"sell-btn" %>
+    <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
   <% end %>
 </div> 

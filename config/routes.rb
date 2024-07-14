@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   root "projects#index"
   
-  resources :projects, only: [:index,:show ,:new, :create] do
-    resources :tasks, only: [:delete] do
+  resources :projects, only: [:index,:show ,:new, :create, :destroy] do
+    resources :tasks, only: [:destroy] do
       resources :tasks, only: [:edit]
     end
   end

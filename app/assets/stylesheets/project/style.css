@@ -64,3 +64,13 @@
 .submit-button{
   margin-top: 20px;
 }
+
+/*############ 削除リンク ############*/
+.item-destroy {
+  background-color: rgb(194, 82, 51);
+  text-align: center;
+  font-size: 16x;
+  color: white;
+  margin: 20px 0px;
+  padding: 20px 10px;
+}

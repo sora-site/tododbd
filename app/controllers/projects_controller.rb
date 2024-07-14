@@ -27,6 +27,12 @@ class ProjectsController < ApplicationController
     @things = Thing.includes(@tasks).order('start_time DESC')
   end
 
+  def destroy
+    project = Project.find(params[:id])
+    project.destroy if user_signed_in? && project.user_id == current_user.id
+    redirect_to root_path
+  end
+
   private
 
   def project_params
