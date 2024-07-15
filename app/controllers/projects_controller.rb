@@ -25,7 +25,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @tasks = Task.where(project_id: params[:id]).order('updated_at DESC')
     @things = Thing.joins(:task_id).order('start_time DESC')
-    @task_thing = TaskThing.new
+    # @task_thing = TaskThing.new(tasks: @tasks, things: @things)
   end
 
   def destroy

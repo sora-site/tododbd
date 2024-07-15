@@ -1,6 +1,6 @@
 <div class="task-list">
   <%= @project.project_name %>
-  <%= form_with model:@thing, url: project_path(:project_id), local: true do |f| %>
+  <%= form_with model:@project, local: true do |f| %>
   <table class="table table-hover">
     <tr>
       <th>タスク</th>
