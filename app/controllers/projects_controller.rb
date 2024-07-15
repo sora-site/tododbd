@@ -21,24 +21,22 @@ class ProjectsController < ApplicationController
     end
   end
 
-  def edit
-    @project = Project.find(params[:id])
-    @tasks = Task.where(project_id: params[:id]).order('updated_at DESC')
-    @things = Thing.joins(:task_id).order('start_time DESC')
-    # @task_thing = TaskThing.new(tasks: @tasks, things: @things)
-  end
-
   def destroy
     project = Project.find(params[:id])
     project.destroy if user_signed_in? && project.user_id == current_user.id
     redirect_to root_path
   end
 
+  def edit
+    @project = Project.find(params[:id])
+    @tasks = Task.where(project_id: params[:id]).order('updated_at DESC')
+    @things = Thing.joins(:task_id).order('start_time DESC')
+  end
+
   def update
-    project = Project.find(params[:id])
-    tasks = project.tasks
-    if tasks.update(thing_params)
-      redirect_to root_path
+    @project = Project.find(params[:id])
+    if @project.update(project_params)
+      redirect_to request.referer
     else
       render :show, status: :unprocessable_entity
     end
@@ -52,9 +50,5 @@ class ProjectsController < ApplicationController
                                                        { things_attributes: [:id, :thing_name, :person_name, :start_time, :end_time,
                                                                              :memo, :status_id, :task_id, :_destroy] }])
           .merge(user_id: current_user.id)
-  end
-
-  def thing_params
-    params.require(:thing).permit(:start_time, :end_time, :status_id)
   end
 end
