@@ -15,11 +15,15 @@
       <tr>
         <td rowspan= "<%= task.things.count %>" ><%= f.text_field :task_name, value:task.task_name %></td>
           <% task.things.each do |thing| %>
-            <td><%= f.text_field :thing_name, value: thing.thing_name %></td>
-            <td><%= f.time_field :start_time, value: thing.start_time.strftime("%H:%M") %></td>
-            <td><%= f.time_field :end_time, value: thing.end_time.strftime("%H:%M") %></td>
-            <td><%= f.text_field :memo, value:thing.memo%></td>
-            <td><%= f.collection_select(:status_id, TaskStatus.all, :id, :name, {include_blank: true, selected: thing.status_id} , {class:"select-box", id:"item-sales-status"}) %></td>
+          <%= f.fields_for :task do |tf| %>
+            <td><%= tf.text_field :thing_name, value: thing.thing_name %></td>
+          <%= tf.fields_for :thing do |thf| %>
+            <td><%= thf.time_field :start_time, value: thing.start_time.strftime("%H:%M") %></td>
+            <td><%= thf.time_field :end_time, value: thing.end_time.strftime("%H:%M") %></td>
+            <td><%= thf.text_field :memo, value:thing.memo%></td>
+            <td><%= thf.collection_select(:status_id, TaskStatus.all, :id, :name, {include_blank: true, selected: thing.status_id} , {class:"select-box", id:"item-sales-status"}) %></td>
+            <% end %>
+            <% end %>
       </tr>
       <% end %>
 
