@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
     tasks = @project.tasks.build
     tasks.things.build
     # ビューから送信された日付情報を取得
-    @day_param = params[:date]
+    @day_param = params[:date].to_date
   end
 
   def create
