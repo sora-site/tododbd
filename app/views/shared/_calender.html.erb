@@ -6,7 +6,7 @@
   <% project_date = project.registered_date %>
 
     <% if project_date == date %>
-      <%= link_to  edit_project_path(project.id) do %>
+      <%= link_to project_path(project.id) do %>
         <%= date.day %>
         <%= project.project_name %>
       <% end %>

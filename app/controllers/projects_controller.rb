@@ -27,20 +27,20 @@ class ProjectsController < ApplicationController
     redirect_to root_path
   end
 
-  def edit
+  def show
     @project = Project.find(params[:id])
     @tasks = Task.where(project_id: params[:id]).order('updated_at DESC')
     @things = Thing.joins(:task_id).order('start_time DESC')
   end
 
-  def update
-    @project = Project.find(params[:id])
-    if @project.update(project_params)
-      redirect_to request.referer
-    else
-      render :show, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   @project = Project.find(params[:id])
+  #   if @project.update(project_edit_params)
+  #     redirect_to request.referer
+  #   else
+  #     render :show, status: :unprocessable_entity
+  #   end
+  # end
 
   private
 
@@ -50,5 +50,9 @@ class ProjectsController < ApplicationController
                                                        { things_attributes: [:id, :thing_name, :person_name, :start_time, :end_time,
                                                                              :memo, :status_id, :task_id, :_destroy] }])
           .merge(user_id: current_user.id)
+  end
+
+  def project_edit_params
+    params.require(:project).permit(things_attributes: [:thing_name, :start_time, :end_time, :memo, :status_id])
   end
 end

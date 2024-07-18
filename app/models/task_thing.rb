@@ -5,8 +5,7 @@ class TaskThing
                 :start_time,
                 :end_time,
                 :memo,
-                :status_id, :project_id,
-                :task_id
+                :status_id
 
   # バリデーション
   with_options presence: true do
@@ -19,10 +18,16 @@ class TaskThing
     validates :status_id, numericality: { other_than: 1, less_than: 5 }
   end
 
-  def update
+  def save
     tasks = Task.where(project_id: params[:id])
     tasks.each do |task|
-      task.update(task_params)
+      task.update(task_name: task.task_name)
+
+      things = Thing.where(task_id: task.id)
+      things.each do |thing|
+        thing.update(thing_name: thing.thing_name, start_time: thing.start_time, end_time: thing.end_time, memo: thing.memo,
+                     status_id: thing.status_id)
+      end
     end
   end
 
