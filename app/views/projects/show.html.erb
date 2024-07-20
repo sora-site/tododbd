@@ -20,10 +20,56 @@
         <td><%= thing.end_time.strftime("%H:%M") %></td>
         <td><%= thing.memo%></td>
         <td><%= Status.find(thing.status_id).name %></td>
-        <td> <%= link_to "編集する", edit_thing_path(thing.id) %></td>
+        <td>
+            <!-- Button trigger modal -->
+            <button type="button" id="edit_thing" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+             編集
+            </button>
+          </td>
       </tr>
         <% end %>
      <% end %>
   </table>
     <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
 </div> 
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">todo・ステータス修正</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form id="edit-form">
+          <div class="form-group">
+            <label for="item-name" class="col-form-label">todo:</label>
+            <input type="text" class="form-control" id="thing_name">
+            <label for="item-name" class="col-form-label">開始時刻:</label>
+            <input type="time" class="form-control" id="start_time">
+            <label for="item-name" class="col-form-label">終了時刻:</label>
+            <input type="time" class="form-control" id="end_time">
+            <label for="item-name" class="col-form-label">メモ:</label>
+            <input type="text" class="form-control" id="memo">
+            <div class="form-group">
+              <label for="item-category" class="col-form-label">ステータス:</label>
+              <select class="form-control" id="item-category">
+                <option value="1">---</option>
+                <option value="2">完了</option>
+                <option value="3">実施中</option>
+                <option value="4">未着手</option>
+                <option value="5">対応不要</option>
+                <option value="6">スタック（実施不可）</option>
+              </select>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
