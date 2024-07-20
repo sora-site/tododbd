@@ -4,7 +4,7 @@ class Thing < ApplicationRecord
   # ActivehashModule
   extend ActiveHash::Associations::ActiveRecordExtensions
   # Activehashアソシエーション
-  belongs_to :task_status
+  belongs_to :status
 
   # バリデーション
   with_options presence: true do
@@ -13,6 +13,6 @@ class Thing < ApplicationRecord
     validates :end_time
     validates :memo, length: { maximum: 50 }
     # Activehashバリデーション（ジャンルの選択が「---」(id = 1)の時は保存できないようにする／各項目想定したidより大きい時は保存できないようにする。）
-    validates :status_id, numericality: { other_than: 1, less_than: 5 }
+    validates :status_id, numericality: { other_than: 1, less_than: 7 }
   end
 end
