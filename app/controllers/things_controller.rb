@@ -6,9 +6,8 @@ class ThingsController < ApplicationController
 
   def update
     @thing = Thing.find(params[:id])
-    binding.pry
     if @thing.update(thing_params)
-      redirect_to root_path
+      redirect_to session[:previous_url]
     else
       render :edit, status: :unprocessable_entity
     end
