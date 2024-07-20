@@ -22,7 +22,9 @@
         <td><%= Status.find(thing.status_id).name %></td>
         <td>
             <!-- Button trigger modal -->
-            <button type="button" id="edit_thing" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="button" id="edit_thing" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+             data-id="<%= thing.id %>" data-name="<%= thing.thing_name %>" data-start="<%= thing.start_time %>" data-end="<%= thing.end_time %>"
+             data-memo="<%= thing.memo %>" data-status="<%= thing.status_id %>">
              編集
             </button>
           </td>
