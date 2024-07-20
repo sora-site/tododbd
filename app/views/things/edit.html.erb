@@ -1,5 +1,6 @@
 <div class="task-list">
   <%= render "shared/error_messages", resource: @thing %>
+  <%= form_with model: @thing, local: true do |f| %>
   <table class="table table-hover">
     <tr>
       <th>内容</th>
@@ -10,15 +11,14 @@
       <th>変更を適用</th>
     </tr>
     <tr>
-    <%= form_with model: @thing, local: true do |f| %>
       <td><%= f.text_field :thing_name, value: @thing.thing_name %></td>
       <td><%= f.time_field :start_time, value: @thing.start_time.strftime("%H:%M") %></td>
       <td><%= f.time_field :end_time, value: @thing.end_time.strftime("%H:%M") %></td>
       <td><%= f.text_field :memo, value: @thing.memo%></td>
       <td><%= f.collection_select(:status_id, Status.all, :id, :name, {} , {class:"select-box", id:"item-sales-status"}) %></td>
       <td> <%= f.submit "変更" ,class:"sell-btn" %></td>
-    <% end %>
     </tr>
   </table>
+  <% end %>
     <%# <%= link_to "タスクを編集", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
 </div> 

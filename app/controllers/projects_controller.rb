@@ -33,15 +33,6 @@ class ProjectsController < ApplicationController
     @things = Thing.joins(:task_id).order('start_time DESC')
   end
 
-  # def update
-  #   @project = Project.find(params[:id])
-  #   if @project.update(project_edit_params)
-  #     redirect_to request.referer
-  #   else
-  #     render :show, status: :unprocessable_entity
-  #   end
-  # end
-
   private
 
   def project_params

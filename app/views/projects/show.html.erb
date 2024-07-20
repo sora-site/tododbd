@@ -9,7 +9,7 @@
       <th>終了予定</th>
       <th>補足</th>
       <th>ステータス</th>
-      <th>変更を適用</th>
+      <th>編集する</th>
     </tr>
     <% @tasks.each do |task| %>
       <tr>
@@ -23,8 +23,7 @@
         <td> <%= link_to "編集する", edit_thing_path(thing.id) %></td>
       </tr>
         <% end %>
-    ß<% end %>
+     <% end %>
   </table>
-    <%# <%= link_to "タスクを編集", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
     <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
 </div> 
