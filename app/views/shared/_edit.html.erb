@@ -1,0 +1,45 @@
+<div class="task-list">
+  <%= @project.project_name %>
+  <%= form_with model:@thing, url: project_path(:project_id), local: true do |f| %>
+  <table class="table table-hover">
+    <tr>
+      <th>タスク</th>
+      <th>内容</th>
+      <th>開始予定</th>
+      <th>終了予定</th>
+      <th>補足</th>
+      <th>ステータス</th>
+    </tr>
+    <% @tasks.each do |task| %>
+      <% case controller.controller_name %>
+      <% when 'projects' %>
+      <tr>
+        <td rowspan= "<%= task.things.count %>" ><%= f.text_field :task_name, value:task.task_name %></td>
+          <% task.things.each do |thing| %>
+            <td><%= f.text_field :thing_name, value: thing.thing_name %></td>
+            <td><%= f.time_field :start_time, value: thing.start_time.strftime("%H:%M") %></td>
+            <td><%= f.time_field :end_time, value: thing.end_time.strftime("%H:%M") %></td>
+            <td><%= f.text_field :memo, value:thing.memo%></td>
+            <td><%= f.collection_select(:status_id, TaskStatus.all, :id, :name, {include_blank: true, selected: thing.status_id} , {class:"select-box", id:"item-sales-status"}) %></td>
+      </tr>
+      <% end %>
+      <% when 'things' %>
+      <tr>
+        <td rowspan= "<%= task.things.count %>" ><%= task.task_name %></td>
+          <% task.things.each do |thing| %>
+            <td><%= thing.thing_name %></td>
+            <td><%= thing.start_time.strftime("%H:%M") %></td>
+            <td><%= thing.end_time.strftime("%H:%M") %></td>
+            <td><%= thing.memo%></td>
+            <td><%= f.collection_select(:status_id, TaskStatus.all, :id, :name, {include_blank: true, selected: thing.status_id} , {class:"select-box", id:"item-sales-status"}) %></td>
+      </tr>
+      <% end %>
+      <% end %>
+
+    <% end %>
+  </table>
+    <%= f.submit "変更" ,class:"sell-btn" %>
+    <%# <%= link_to "タスクを編集", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
+    <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
+  <% end %>
+</div> 

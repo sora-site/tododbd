@@ -1,6 +1,25 @@
-<%= month_calendar do |date| %>
+<%= month_calendar events: collection do |date, project| %>
+<% project_date = '' %>
+<% project_params = collection %>
 
-<%= link_to new_project_path do %>
-  <%= date.day %>
-  <%end%>
+  <% project_params.each do |project|%>
+  <% project_date = project.registered_date %>
+
+    <% if project_date == date %>
+      <%= link_to project_path(project.id) do %>
+        <%= date.day %>
+        <%= project.project_name %>
+      <% end %>
+      <% break %>
+    <% end %>
+
+  <% end %>
+    
+    <% unless project_date == date %>
+    <%# <% コントローラーの処理に渡す日付情報を設定 %>
+      <%= link_to new_project_path(date: date, params_controller: params[:controller]) do %>
+        <%= date.day %>
+      <% end %>
+    <% end %>
+
 <% end %>

@@ -1,8 +1,12 @@
 <div class="project-forms">
 <div class="row g-3" id="project-form">
 <%= form_with model: @project, local: true do |f| %>
+<%= render "shared/error_messages", resource: @project %>
     <div class="col-12">
-    <label for="exampleFormControlInput1" class="form-label">プロジェクト</label>
+    <%# <% コントローラーから受け取った日付情報を年月日に変換して表示 %>
+    <label for="exampleFormControlInput1" class="form-label"><%= "#{@day_param&.strftime("%Y年%m月%d日")}のプロジェクト名" %></label>
+    <%# <% コントローラーから受け取った日付情報を登録する値に設定（非表示） %>
+    <%= f.hidden_field :registered_date ,value: @day_param%>
     <%= f.text_field :project_name , class: "form-control form-control-lg", id: "exampleFormControlInput1" ,placeholder:"例)：3/13のタスク(ルームのタイトルにもなります)"%>
     </div>
         <div class="links">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_07_063521) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_14_054043) do
   create_table "projects", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_07_063521) do
     t.time "start_time", null: false
     t.time "end_time", null: false
     t.text "memo"
-    t.integer "status_id", default: 3, null: false
+    t.integer "status_id", default: 4, null: false
     t.bigint "task_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

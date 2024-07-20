@@ -3,7 +3,6 @@
 	共通部品用css
 ################################################
 */
-
 .light-blue-btn {
   width: 100%;
   background: #8aa1e7;
@@ -17,4 +16,43 @@
 .furima-icon {
   width: 10vw;
   margin-right: 10vw;
+}
+
+.container-fluid {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1vh 0;
+}
+
+
+.lists-left {
+  display: flex;
+  min-width: 200px;
+  list-style: none;
+  padding: 0px;
+}
+
+.login{
+  margin-right: 18px;
+}
+
+.lists-right {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+}
+
+.error-alert {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5vh;
+}
+
+.error-message {
+  font-size: 1.3vw;
+  list-style: circle;
+  color: rgb(182, 48, 0);
 }
