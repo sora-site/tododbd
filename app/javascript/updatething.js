@@ -29,11 +29,10 @@ function update (){
       headers: {
         'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
       }
-    }).done(function(data) {
+    }).done(function() {
       alert('todo・ステータスを更新しました！');
     }).fail(function(err) {
-
-      console.error('Error:', err);
+      alert('todo・ステータスの更新に失敗しました。管理者に問い合わせてください');
       });
         // モーダルを閉じる
         $('#exampleModal').modal('hide');
