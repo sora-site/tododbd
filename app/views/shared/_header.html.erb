@@ -12,18 +12,16 @@
             <%=link_to 'ホーム', root_path, class:"nav-link active" %>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">スペース一覧</a>
+            <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">スペース</a>
             <ul class="dropdown-menu">
-              <li class="nav-item">
-                <a class="nav-link" href="#">新規作成</a>
-            </li>
+              <%=link_to '新規作成', new_space_path, class:"dropdown-item" %>
               <li><a class="dropdown-item" href="#">Action</a></li>
               <li><a class="dropdown-item" href="#">Another action</a></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">タスクチャット一覧</a>
+            <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">todoチャット</a>
             <ul class="dropdown-menu">
               <form role="search">
                 <input class="form-control" type="search" placeholder="Search" aria-label="Search">
