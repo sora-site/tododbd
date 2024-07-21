@@ -19,7 +19,7 @@ function update (){
         thing:{
         id: thingId,
         thing_name: thingName,
-        person_name: startTime,
+        start_time: startTime,
         end_time: endTime,
         memo: memo ,
         status_id: status,
