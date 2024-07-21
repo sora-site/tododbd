@@ -42,8 +42,4 @@ class ProjectsController < ApplicationController
                                                                              :memo, :status_id, :task_id, :_destroy] }])
           .merge(user_id: current_user.id)
   end
-
-  def project_edit_params
-    params.require(:project).permit(things_attributes: [:thing_name, :start_time, :end_time, :memo, :status_id])
-  end
 end
