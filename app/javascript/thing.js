@@ -1,7 +1,6 @@
 function post (){
   var convertToHHmm = function(date) {
     var date = new Date(date);
-    // プライベートメソッドの処理
     var hours = date.getHours(); // 時間を取得
     var minutes = date.getMinutes(); // 分を取得
 
@@ -13,15 +12,19 @@ function post (){
       minutes = '0' + minutes;
     }
 
-    var time = hours + ':' + minutes; // hh:mm 形式に整形
+    // hh:mm 形式に整形
+    var time = hours + ':' + minutes;
     return time
   }
   //button要素をidで取得
-  const buttons = document.querySelectorAll(".btn")
+  const buttons = document.querySelectorAll(".btn.btn-primary.edit");
+  if (!buttons){ return false;}
   //buttonをクリックした際イベント発火
   // 各ボタンに対してイベントリスナーを設定
 buttons.forEach(function(button) {
   button.addEventListener('click', function() {
+     // taskId
+     var taskId = $(this).data('task-id');
      // Id
      var thingId = $(this).data('id');
      // Name
@@ -42,6 +45,8 @@ buttons.forEach(function(button) {
       data: { id : thingId },
       success: function() {
         // Successの処理(モーダル画面のvalueに値を挿入)
+        $('#task_id').val(taskId);
+        $('#thing_id').val(thingId);
         $('#thing_name').val(thingName);
         $('#start_time').val(startTime);
         $('#end_time').val(endTime);

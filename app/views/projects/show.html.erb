@@ -4,7 +4,7 @@
   <table class="table table-hover">
     <tr>
       <th>タスク</th>
-      <th>内容</th>
+      <th>todo</th>
       <th>開始予定</th>
       <th>終了予定</th>
       <th>補足</th>
@@ -22,8 +22,8 @@
         <td><%= Status.find(thing.status_id).name %></td>
         <td>
             <!-- Button trigger modal -->
-            <button type="button" id="edit_thing" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
-             data-id="<%= thing.id %>" data-name="<%= thing.thing_name %>" data-start="<%= thing.start_time %>" data-end="<%= thing.end_time %>"
+            <button type="button" id="edit_thing" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
+            data-task-id=<%= thing.task_id %> data-id="<%= thing.id %>" data-name="<%= thing.thing_name %>" data-start="<%= thing.start_time %>" data-end="<%= thing.end_time %>"
              data-memo="<%= thing.memo %>" data-status="<%= thing.status_id %>">
              編集
             </button>
@@ -47,14 +47,16 @@
       <div class="modal-body">
           <form id="edit-form">
           <div class="form-group">
+            <input type="hidden" class="form-control" id="task_id" name="task_id">
+            <input type="hidden" class="form-control" id="thing_id" name="thing_id">
             <label for="item-name" class="col-form-label">todo:</label>
-            <input type="text" class="form-control" id="thing_name">
+            <input type="text" class="form-control" id="thing_name" name="thing_name">
             <label for="item-name" class="col-form-label">開始時刻:</label>
-            <input type="time" class="form-control" id="start_time">
+            <input type="time" class="form-control" id="start_time" name="start_time">
             <label for="item-name" class="col-form-label">終了時刻:</label>
-            <input type="time" class="form-control" id="end_time">
+            <input type="time" class="form-control" id="end_time" name="end_time">
             <label for="item-name" class="col-form-label">メモ:</label>
-            <input type="text" class="form-control" id="memo">
+            <input type="text" class="form-control" id="memo" name="memo">
             <div class="form-group">
               <label for="item-category" class="col-form-label">ステータス:</label>
               <select class="form-control" id="status">
