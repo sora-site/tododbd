@@ -1,8 +1,8 @@
 class ThingsController < ApplicationController
   def edit
     @thing = Thing.find(params[:id])
-    @task_name = Task.find(@thing.task_id).task_name
-    session[:previous_url] = request.referer
+    # @task_name = Task.find(@thing.task_id).task_name
+    # session[:previous_url] = request.referer
   end
 
   def update
