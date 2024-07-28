@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   
   resources :projects, only: [:index ,:new, :create, :destroy, :show]
   resources :things, only: [:edit, :update] 
+  resources :spaces, only: [:new, :create]
 end
