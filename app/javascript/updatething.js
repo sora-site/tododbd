@@ -19,7 +19,7 @@ function update (){
         thing:{
         id: thingId,
         thing_name: thingName,
-        person_name: startTime,
+        start_time: startTime,
         end_time: endTime,
         memo: memo ,
         status_id: status,
@@ -29,11 +29,10 @@ function update (){
       headers: {
         'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
       }
-    }).done(function(data) {
+    }).done(function() {
       alert('todo・ステータスを更新しました！');
     }).fail(function(err) {
-
-      console.error('Error:', err);
+      alert('todo・ステータスの更新に失敗しました。管理者に問い合わせてください');
       });
         // モーダルを閉じる
         $('#exampleModal').modal('hide');
