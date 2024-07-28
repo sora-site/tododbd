@@ -3,65 +3,102 @@
 	projectビューcss
 ################################################
 */
+.task-list {
 
-/*############ フォーム全体 ############*/
-.project-forms{
+  table {
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-word;
+  }
+
+  .table.table-hover.task {
+    border-collapse: collapse;
+    border: 1px solid rgba(0, 0, 0, .1);
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .table.table-hover.task th,
+  .table.table-hover.task td {
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: .6em;
+    text-align: center;
+    background: #fff;
+  }
+
+  .table.table-hover.task th {
+    background: #3F51B5;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .table.table-hover.task th:first-child {
+    width: 120px;
+  }
+}
+
+/*############ newフォーム全体 ############*/
+.project-forms {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-#project-form{
- width: 1000px;
+#project-form {
+  width: 1000px;
 }
 
-.nested-fields.task-field{
+.nested-fields.task-field {
   position: relative;
   margin-top: 40px;
 }
 
-.add_todo.add_fields{
+.add_todo.add_fields {
   position: absolute;
   right: 155px;
 }
 
-.things-header{
+.things-header {
   display: flex;
   margin-top: 5px;
 }
 
-.nested-fields.thing-field{
+.nested-fields.thing-field {
   display: flex;
   justify-content: space-between;
 }
 
+/*######### project/showビュー #########*/
+
+
+
 /*############ thingヘッダー ############*/
-.head{
+.head {
   margin-bottom: 0px;
   position: relative;
 }
 
-.head.description{
+.head.description {
   position: absolute;
   right: 753px;
 }
 
-.head.start{
+.head.start {
   position: absolute;
   right: 207px;
 }
 
-.head.end{
+.head.end {
   position: absolute;
   right: 112px;
 }
 
-.memo-field{
-  width: 500px; 
+.memo-field {
+  width: 500px;
 }
 
 /*############ submitボタン ############*/
-.submit-button{
+.submit-button {
   margin-top: 20px;
 }
 
@@ -76,7 +113,7 @@
 }
 
 /*############ thing編集画面 ############*/
-.task_title{
+.task_title {
   display: flex;
   justify-content: center;
   align-items: center;
