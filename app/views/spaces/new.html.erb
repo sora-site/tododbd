@@ -1,6 +1,7 @@
 <div class='chat-room-form'>
   <h1>新規チャットルーム</h1>
   <%=form_with model: @space, local: true do |f|%>
+  <%= render "shared/error_messages", resource: @space %>
     <div class='chat-room-form__field'>
       <div class='chat-room-form__field--left'>
         <%= f.label :space_name, :チャットルーム名, class: 'chat-room-form__label'%>
@@ -23,6 +24,7 @@
           <% end %>
         </select>
         <input name="space[user_ids][]" type="hidden" value=<%= current_user.id %>>
+        <input name="space[orner_id]" type="hidden" value=<%= current_user.id %>>
       </div>
     </div>
     <div class='chat-room-form__field'>

@@ -31,7 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_28_074824) do
 
   create_table "spaces", charset: "utf8", force: :cascade do |t|
     t.string "space_name", null: false
-    t.string "orner_name", null: false
+    t.integer "orner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
