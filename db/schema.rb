@@ -44,8 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_05_063500) do
     t.integer "orner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "project_id", null: false
-    t.index ["project_id"], name: "index_spaces_on_project_id"
   end
 
   create_table "tasks", charset: "utf8", force: :cascade do |t|
@@ -88,7 +86,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_08_05_063500) do
   add_foreign_key "projects", "users"
   add_foreign_key "space_users", "spaces"
   add_foreign_key "space_users", "users"
-  add_foreign_key "spaces", "projects"
   add_foreign_key "tasks", "projects"
   add_foreign_key "things", "tasks"
 end
