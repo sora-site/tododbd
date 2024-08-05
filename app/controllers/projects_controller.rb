@@ -31,6 +31,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @tasks = Task.where(project_id: params[:id]).order('updated_at DESC')
     @things = Thing.joins(:task_id).order('start_time DESC')
+    @space_exit = Space.where(project_id: params[:id])
   end
 
   private

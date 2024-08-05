@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ThingsControllerTest < ActionDispatch::IntegrationTest
+class SpacesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

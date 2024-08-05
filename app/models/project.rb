@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   has_many :tasks, dependent: :destroy
+  has_one :space
 
   def start_time
     registered_date

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_14_054043) do
+ActiveRecord::Schema[7.0].define(version: 2024_08_05_052020) do
   create_table "projects", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -18,6 +18,24 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_14_054043) do
     t.string "project_name", null: false
     t.date "registered_date", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "space_users", charset: "utf8", force: :cascade do |t|
+    t.bigint "space_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["space_id"], name: "index_space_users_on_space_id"
+    t.index ["user_id"], name: "index_space_users_on_user_id"
+  end
+
+  create_table "spaces", charset: "utf8", force: :cascade do |t|
+    t.string "space_name", null: false
+    t.integer "orner_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "project_id", null: false
+    t.index ["project_id"], name: "index_spaces_on_project_id"
   end
 
   create_table "tasks", charset: "utf8", force: :cascade do |t|
@@ -56,6 +74,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_14_054043) do
   end
 
   add_foreign_key "projects", "users"
+  add_foreign_key "space_users", "spaces"
+  add_foreign_key "space_users", "users"
+  add_foreign_key "spaces", "projects"
   add_foreign_key "tasks", "projects"
   add_foreign_key "things", "tasks"
 end
