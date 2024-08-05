@@ -16,6 +16,6 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:space_name, :orner_id, user_ids: [])
+    params.require(:space).permit(:space_name, :orner_id, user_ids: []).merge(project_id: params[:project_id])
   end
 end
