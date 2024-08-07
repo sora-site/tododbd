@@ -34,6 +34,8 @@
   </table>
   <% if @space_exit.blank?%>
     <%=link_to '新規作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"create-space" %>
+    <% else %>
+      <%= link_to 'チャット', space_messages_path(@space_id) %>
   <% end %>
     <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
 </div> 
