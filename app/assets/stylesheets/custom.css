@@ -6,6 +6,11 @@
 
 /*############ ヘッダー部分 ############*/
 
+.top-page-header{
+  position: sticky;
+  top: 0;
+}
+
 .navbar-toggler {
   /* # 枠の色 */
   border-color: lightblue;

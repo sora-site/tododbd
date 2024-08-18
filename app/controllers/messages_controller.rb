@@ -3,6 +3,10 @@ class MessagesController < ApplicationController
     @message = Message.new
     @space = Space.find(params[:space_id])
     @messages = @space.messages.includes(:user)
+    project_id = @space.project_id
+    @project = Project.find(project_id)
+    @tasks = Task.where(project_id:).order('updated_at DESC')
+    @things = Thing.joins(:task_id).order('start_time DESC')
   end
 
   def create

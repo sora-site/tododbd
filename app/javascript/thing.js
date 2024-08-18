@@ -19,6 +19,11 @@ function post (){
   //button要素をidで取得
   const buttons = document.querySelectorAll(".btn.btn-primary.edit");
   if (!buttons){ return false;}
+
+  document.querySelector("#message-submit").addEventListener("click", function(event) {
+    event.stopPropagation();
+ });
+
   //buttonをクリックした際イベント発火
   // 各ボタンに対してイベントリスナーを設定
 buttons.forEach(function(button) {
