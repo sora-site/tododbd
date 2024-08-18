@@ -32,7 +32,7 @@
         <% end %>
      <% end %>
   </table>
-  <% if @space_exit.blank?%>
+  <% if @space.blank?%>
     <%=link_to '新規作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"create-space" %>
     <% else %>
       <%= link_to 'チャット', space_messages_path(@space_id) %>
