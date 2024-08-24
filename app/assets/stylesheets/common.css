@@ -8,6 +8,12 @@ html {
   scroll-behavior: smooth;
 }
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
 .light-blue-btn {
   width: 100%;
   background: #8aa1e7;

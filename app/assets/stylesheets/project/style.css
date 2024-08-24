@@ -42,6 +42,7 @@
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-top: 40px;
 }
 
 #project-form {
@@ -50,7 +51,7 @@
 
 .nested-fields.task-field {
   position: relative;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .add_todo.add_fields {
@@ -60,12 +61,16 @@
 
 .things-header {
   display: flex;
-  margin-top: 5px;
+  margin-top: 10px;
 }
 
 .nested-fields.thing-field {
   display: flex;
   justify-content: space-between;
+}
+
+.links{
+  margin-top: 20px;
 }
 
 /*######### project/showビュー #########*/

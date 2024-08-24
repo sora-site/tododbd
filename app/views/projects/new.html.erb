@@ -4,9 +4,9 @@
     <%= render "shared/error_messages", resource: @project %>
       <div class="col-12">
       <%# <% コントローラーから受け取った日付情報を年月日に変換して表示 %>
-        <label for="exampleFormControlInput1" class="form-label"><%= "#{@day_param&.strftime("%Y年%m月%d日")}の予定" %></label>
+        <label for="exampleFormControlInput1" class="form-label"><%= "#{@day_param&.strftime("%Y年%m月%d日")}のタスク" %></label>
           <%= f.hidden_field :registered_date ,value: @day_param%>
-          <%= f.text_field :project_name , class: "form-control form-control-lg", id: "exampleFormControlInput1" ,placeholder:"例)：8/13・買い物(日付とタスク内容が分かるように入力)"%>
+          <%= f.text_field :project_name , class: "form-control form-control-lg", id: "exampleFormControlInput1" ,placeholder:"例)：08月29日・買い物(日付とタスク内容が分かるように入力)"%>
       </div>
       <div class="links">
         <%= link_to_add_association "タスクを追加", f, :tasks, class: 'add_tasks',
