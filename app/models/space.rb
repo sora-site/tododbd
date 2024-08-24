@@ -2,6 +2,7 @@ class Space < ApplicationRecord
   belongs_to :project
   has_many :space_users, dependent: :destroy
   has_many :users, through: :space_users
+  has_many :messages
 
   with_options presence: true do
     validates :space_name

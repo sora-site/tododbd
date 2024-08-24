@@ -3,6 +3,11 @@
 	共通部品用css
 ################################################
 */
+
+html {
+  scroll-behavior: smooth;
+}
+
 .light-blue-btn {
   width: 100%;
   background: #8aa1e7;

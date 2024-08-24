@@ -69,7 +69,9 @@
 }
 
 /*######### project/showビュー #########*/
-
+.btn.btn-primary.edit{
+  --bs-btn-bg:none
+}
 
 
 /*############ thingヘッダー ############*/

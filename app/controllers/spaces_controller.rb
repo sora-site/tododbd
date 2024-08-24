@@ -1,7 +1,11 @@
 class SpacesController < ApplicationController
+  def index
+  end
+
   def new
     @space = Space.new
     @orner_id = current_user.id
+    @project_id = params[:project_id]
   end
 
   def create
@@ -16,6 +20,6 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:space_name, :orner_id, user_ids: []).merge(project_id: params[:project_id])
+    params.require(:space).permit(:space_name, :orner_id, :project_id, user_ids: [])
   end
 end

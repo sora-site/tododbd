@@ -19,6 +19,7 @@ function post (){
   //button要素をidで取得
   const buttons = document.querySelectorAll(".btn.btn-primary.edit");
   if (!buttons){ return false;}
+
   //buttonをクリックした際イベント発火
   // 各ボタンに対してイベントリスナーを設定
 buttons.forEach(function(button) {
@@ -63,3 +64,4 @@ buttons.forEach(function(button) {
 };
  
 window.addEventListener('turbo:load', post);
+window.addEventListener("turbo:render", post)

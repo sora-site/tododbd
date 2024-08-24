@@ -9,7 +9,7 @@
       <th>終了予定</th>
       <th>補足</th>
       <th>ステータス</th>
-      <th>編集する</th>
+      <th>編集</th>
     </tr>
     <% @tasks.each do |task| %>
       <tr>
@@ -25,17 +25,22 @@
             <button type="button" id="edit_thing" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
             data-task-id=<%= thing.task_id %> data-id="<%= thing.id %>" data-name="<%= thing.thing_name %>" data-start="<%= thing.start_time %>" data-end="<%= thing.end_time %>"
              data-memo="<%= thing.memo %>" data-status="<%= thing.status_id %>">
-             編集
+             <%= image_tag 'pen-solid.png', size:'20x20' %>
             </button>
           </td>
       </tr>
         <% end %>
      <% end %>
   </table>
-  <% if @space_exit.blank?%>
-    <%=link_to '新規作成', new_project_space_path(@project.id), class:"create-space" %> 
+  <% if @space.blank?%>
+    <%=link_to '新規作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"create-space" %>
+    <% else %>
+      <%= link_to 'チャット', space_messages_path(@space_id) %>
   <% end %>
-    <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
+
+    <% if @project.user_id == current_user.id%>
+      <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
+    <% end %>
 </div> 
 
 
@@ -44,7 +49,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">todo・ステータス修正</h5>
+        <h5 class="modal-title" id="exampleModalLabel">更新ウィンドウ</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
