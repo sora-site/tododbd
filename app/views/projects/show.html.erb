@@ -1,3 +1,16 @@
+
+<div class ="links_list">
+<% if @space.blank?%>
+    <%=link_to 'チャットルームを作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"space_button" %>
+    <% else %>
+      <%= link_to 'チャット', space_messages_path(@space_id) ,class:"space_button"%>
+  <% end %>
+
+    <% if @project.user_id == current_user.id%>
+      <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
+    <% end %>
+</div>
+
 <div class="task-list">
   <%= @project.project_name %>
   <%= render "shared/error_messages", resource: @project %>
@@ -5,9 +18,9 @@
     <tr>
       <th>タスク</th>
       <th>todo</th>
+      <th>補足</th>
       <th>開始予定</th>
       <th>終了予定</th>
-      <th>補足</th>
       <th>ステータス</th>
       <th>編集</th>
     </tr>
@@ -16,9 +29,9 @@
         <td rowspan= "<%= task.things.count %>" ><%= task.task_name %></td>
         <% task.things.each do |thing| %>
         <td><%= thing.thing_name %></td>
+        <td><%= thing.memo%></td>
         <td><%= thing.start_time.strftime("%H:%M") %></td>
         <td><%= thing.end_time.strftime("%H:%M") %></td>
-        <td><%= thing.memo%></td>
         <td><%= Status.find(thing.status_id).name %></td>
         <td>
             <!-- Button trigger modal -->
@@ -32,15 +45,6 @@
         <% end %>
      <% end %>
   </table>
-  <% if @space.blank?%>
-    <%=link_to '新規作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"create-space" %>
-    <% else %>
-      <%= link_to 'チャット', space_messages_path(@space_id) %>
-  <% end %>
-
-    <% if @project.user_id == current_user.id%>
-      <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" %>
-    <% end %>
 </div> 
 
 
@@ -49,7 +53,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">更新ウィンドウ</h5>
+        <h5 class="modal-title" id="exampleModalLabel">更新</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -59,12 +63,12 @@
             <input type="hidden" class="form-control" id="thing_id" name="thing_id">
             <label for="item-name" class="col-form-label">todo:</label>
             <input type="text" class="form-control" id="thing_name" name="thing_name">
+            <label for="item-name" class="col-form-label">メモ:</label>
+            <input type="text" class="form-control" id="memo" name="memo">
             <label for="item-name" class="col-form-label">開始時刻:</label>
             <input type="time" class="form-control" id="start_time" name="start_time">
             <label for="item-name" class="col-form-label">終了時刻:</label>
             <input type="time" class="form-control" id="end_time" name="end_time">
-            <label for="item-name" class="col-form-label">メモ:</label>
-            <input type="text" class="form-control" id="memo" name="memo">
             <div class="form-group">
               <label for="item-category" class="col-form-label">ステータス:</label>
               <select class="form-control" id="status">

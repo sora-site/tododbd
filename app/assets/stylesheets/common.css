@@ -67,3 +67,7 @@ header {
   list-style: circle;
   color: rgb(182, 48, 0);
 }
+
+.fa-trash-alt::before {
+  text-decoration: none;
+}

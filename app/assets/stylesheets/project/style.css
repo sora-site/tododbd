@@ -3,8 +3,36 @@
 	projectビューcss
 ################################################
 */
+.links_list {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 40px;
+  height: 40px;
+
+  .space_button {
+    height: 100%;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  /*############ 削除リンク ############*/
+  .item-destroy {
+    background-color: rgb(194, 82, 51);
+    font-size: 16px;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: white;
+    text-decoration: none;
+    /* color: black; */
+    height: 100%;
+  }
+}
+
 .task-list {
   margin: 20px 40px;
+
   table {
     table-layout: fixed;
     word-break: break-all;
@@ -51,31 +79,33 @@
 
 .nested-fields.task-field {
   position: relative;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .add_todo.add_fields {
   position: absolute;
-  right: 155px;
+  left: 0px;
+  top: 45px;
 }
 
 .things-header {
   display: flex;
-  margin-top: 10px;
+  margin-top: 50px;
 }
 
 .nested-fields.thing-field {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 5px;
 }
 
-.links{
-  margin-top: 20px;
+.links {
+  margin-top: 40px;
 }
 
 /*######### project/showビュー #########*/
-.btn.btn-primary.edit{
-  --bs-btn-bg:none
+.btn.btn-primary.edit {
+  --bs-btn-bg: none
 }
 
 
@@ -87,17 +117,17 @@
 
 .head.description {
   position: absolute;
-  right: 753px;
+  right: 736px;
 }
 
 .head.start {
   position: absolute;
-  right: 207px;
+  right: 175px;
 }
 
 .head.end {
   position: absolute;
-  right: 112px;
+  right: 63px;
 }
 
 .memo-field {
@@ -107,16 +137,6 @@
 /*############ submitボタン ############*/
 .submit-button {
   margin-top: 20px;
-}
-
-/*############ 削除リンク ############*/
-.item-destroy {
-  background-color: rgb(194, 82, 51);
-  text-align: center;
-  font-size: 16x;
-  color: white;
-  margin: 20px 0px;
-  padding: 20px 10px;
 }
 
 /*############ thing編集画面 ############*/
