@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    # @url = set_url
     @project = Project.find(params[:id])
     @tasks = Task.where(project_id: params[:id]).order('updated_at DESC')
     @things = Thing.joins(:task_id).order('start_time DESC')
@@ -46,4 +47,10 @@ class ProjectsController < ApplicationController
                                                                              :memo, :status_id, :task_id, :_destroy] }])
           .merge(user_id: current_user.id)
   end
+
+  # def set_url
+  #   url = request.referer
+  #   url ||= 1
+  #   url.to_s
+  # end
 end

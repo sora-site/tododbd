@@ -2,9 +2,9 @@
   <%= render partial: 'message', collection: @messages %>
 </div>
 
- <%= form_with model: [@space, @message], html: {class: "form"}, local: true do |f|%>
-  <div class="form-input">
+<div class="form-input">
+  <%= form_with model: [@space, @message], html: {class: "form"}, local: true do |f|%>
     <%= f.text_field :content, class: 'form-message', placeholder: 'type a message' %>
-  <%= f.submit '送信', class: 'form-submit' ,id: 'message-submit'%>
-<% end %>
-  </div>
+    <%= f.submit '送信', class: 'form-submit' ,id: 'message-submit'%>
+  <% end %>
+</div>
