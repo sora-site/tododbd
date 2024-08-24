@@ -67,8 +67,8 @@
   /* background-color: #FAFAFA; */
   height: calc(100vh - 100px - 90px);
   width: 1440px;
-  padding: 46px 40px 0;
-  overflow: scroll;
+  padding: 20px 40px 0;
+  overflow: auto;
 }
 
 .message {
@@ -115,7 +115,6 @@
   width: 100%; 
   position: fixed;
   bottom: 0;
-  padding: 20px;
 }
 
 .form-message{

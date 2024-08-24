@@ -4,7 +4,7 @@
 ################################################
 */
 .task-list {
-
+  margin: 20px 40px;
   table {
     table-layout: fixed;
     word-break: break-all;
