@@ -1,7 +1,4 @@
 class SpacesController < ApplicationController
-  def index
-  end
-
   def new
     @space = Space.new
     @orner_id = current_user.id
@@ -15,6 +12,13 @@ class SpacesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    @space = Space.find(params[:id])
+    @project = Project.find(params[:project_id])
+    @tasks = Task.where(project_id: @project.id).order('created_at ASC')
+    @things = Thing.joins(:task_id).order('start_time DESC')
   end
 
   private

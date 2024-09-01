@@ -4,8 +4,6 @@ Rails.application.routes.draw do
   root "projects#index"
   
   resources :projects, only: [:index ,:new, :create, :destroy, :show]
-  resources :things, only: [:edit, :update] 
-  resources :spaces, only: [:new, :create, :index] do
-    resources :messages, only: [:index, :create]
-  end
+  resources :things, only: [:edit, :update, :new, :create] 
+  resources :spaces, only: [:new, :create, :index, :show]
 end

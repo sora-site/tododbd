@@ -3,7 +3,7 @@
 <% if @space.blank?%>
     <%=link_to 'shareboardを作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"space_button" %>
     <% else %>
-      <%= link_to 'shareboard', space_messages_path(@space_id) ,class:"space_button"%>
+      <%= link_to 'shareboard', space_path(@space_id ,project_id: params[:id], params_controller: params[:controller]), class:"space_button"%>
   <% end %>
 
     <% if @project.user_id == current_user.id%>
@@ -28,7 +28,11 @@
     <% countnum = 0%>
     <% @tasks.each do |task| %>
       <tr>
-        <td rowspan= "<%= task.things.count %>" ><%= task.task_name %></td>
+        <td rowspan= "<%= task.things.count %>" >
+          <%= link_to new_thing_path(task_id: params[task.id], params_controller: params[:controller]) do %>
+             <%= task.task_name %>
+          <% end %>
+        </td>
         <% task.things.each do |thing| %>
         <% countnum += 1%>
         <td><%= countnum %></td>
@@ -67,8 +71,6 @@
             <input type="hidden" class="form-control" id="thing_id" name="thing_id">
             <label for="item-name" class="col-form-label">todo:</label>
             <input type="text" class="form-control" id="thing_name" name="thing_name">
-            <label for="item-name" class="col-form-label">メモ:</label>
-            <input type="text" class="form-control" id="memo" name="memo">
             <label for="item-name" class="col-form-label">開始時刻:</label>
             <input type="time" class="form-control" id="start_time" name="start_time">
             <label for="item-name" class="col-form-label">終了時刻:</label>
@@ -84,6 +86,8 @@
                 <option value="6">スタック（実施不可）</option>
               </select>
             </div>
+            <label for="item-name" class="col-form-label">メモ:</label>
+            <input type="text" class="form-control" id="memo" name="memo">
           </div>
       </div>
       <div class="modal-footer">
