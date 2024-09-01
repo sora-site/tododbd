@@ -1,9 +1,9 @@
 
 <div class ="links_list">
 <% if @space.blank?%>
-    <%=link_to 'チャットルームを作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"space_button" %>
+    <%=link_to 'shareboardを作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"space_button" %>
     <% else %>
-      <%= link_to 'チャット', space_messages_path(@space_id) ,class:"space_button"%>
+      <%= link_to 'shareboard', space_messages_path(@space_id) ,class:"space_button"%>
   <% end %>
 
     <% if @project.user_id == current_user.id%>
@@ -17,22 +17,26 @@
   <table class="table table-hover task">
     <tr>
       <th>タスク</th>
+      <th>seqNo</th>
       <th>todo</th>
-      <th>補足</th>
       <th>開始予定</th>
       <th>終了予定</th>
       <th>ステータス</th>
+      <th>補足</th>
       <th>編集</th>
     </tr>
+    <% countnum = 0%>
     <% @tasks.each do |task| %>
       <tr>
         <td rowspan= "<%= task.things.count %>" ><%= task.task_name %></td>
         <% task.things.each do |thing| %>
+        <% countnum += 1%>
+        <td><%= countnum %></td>
         <td><%= thing.thing_name %></td>
-        <td><%= thing.memo%></td>
         <td><%= thing.start_time.strftime("%H:%M") %></td>
         <td><%= thing.end_time.strftime("%H:%M") %></td>
         <td><%= Status.find(thing.status_id).name %></td>
+        <td><%= thing.memo%></td>
         <td>
             <!-- Button trigger modal -->
             <button type="button" id="edit_thing" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#exampleModal"
@@ -89,3 +93,8 @@
     </div>
   </div>
 </div>
+<a class="pagetop" href="#">
+  <div class="pagetop__arrow">
+     <%= image_tag 'angle-up-solid.png'%>
+  </div>
+</a>

@@ -1,10 +1,21 @@
+.message-wrapper {
+  overflow: hidden;
+}
+
+/* .task-list {
+  width: max-content;
+  bottom: 0;
+  overflow: auto;
+} */
+
+
 .wrapper {
   display: flex;
   height: 100vh;
   width: 100vw;
 }
 
-.header-name a{
+.header-name a {
   font-size: 16px;
   color: #FAFAFA;
   text-decoration: none;
@@ -37,6 +48,7 @@
 .chat {
   background-color: #FFFFFF;
   width: calc(100vw - 300px);
+  overscroll-behavior: auto
 }
 
 .chat-header {
@@ -69,14 +81,14 @@
   width: 1440px;
   padding: 20px 40px 0;
   /* overflow-y: auto; */
-  max-width:100%;
+  max-width: 100%;
 }
 
 .message {
   margin: 10px 0 0 0;
 }
 
-.upper-message{
+.upper-message {
   display: flex;
 }
 
@@ -110,22 +122,22 @@
   justify-content: space-between;
 }
 
-.form-input{
+.form-input {
   background-color: white;
   display: flex;
-  width: 100%; 
+  width: 100%;
   position: fixed;
   bottom: 0;
 }
 
-.form-message{
+.form-message {
   border: 1px solid gray;
   height: 50px;
   width: 100%;
   padding-left: 10px;
 }
 
-.form-submit{
+.form-submit {
   background-color: #38AEF0;
   color: white;
   border: none;
@@ -149,18 +161,18 @@
   display: none;
 }
 
-#scroll_snap{
+#scroll_snap {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
 
 /* ページトップへ戻るボタン */
 .pagetop {
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   position: fixed;
-  right: 30px;
-  bottom: 100px;
+  right: 0;
+  bottom: 0;
   background: #fff;
   border: solid 2px #000;
   border-radius: 50%;
