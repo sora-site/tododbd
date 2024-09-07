@@ -16,21 +16,16 @@ class ThingsController < ApplicationController
   end
 
   def new
-    redirect_to new_user_session_path unless user_signed_in?
-    @thing = Thing.new
+    @things = Thing.new
     # projectと紐づくtasks.thingsをビルド
-    tasks = @project.tasks.build
-    tasks.things.build
-    # ビューから送信された日付情報を取得
-    @day_param = params[:date].to_date
   end
 
   def create
-    @project = Project.new(project_params)
-    if @project.save
-      redirect_to root_path
+    @thing = Thing.new(thing_params)
+    if @thing.save
+      render json: @thing
     else
-      render :new, status: :unprocessable_entity
+      render json: @thing.errors, status: :unprocessable_entity
     end
   end
 

@@ -17,20 +17,20 @@ function update (){
       url: '/things/' + thingId, 
       data: {
         thing:{
-        id: thingId,
+        // id: thingId,
         thing_name: thingName,
         start_time: startTime,
         end_time: endTime,
         memo: memo ,
         status_id: status,
-        task_id:taskId
+        // task_id:taskId
        } 
       },
       headers: {
         'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
       }
     }).done(function() {
-      alert('todo・ステータスを更新しました！');
+      // alert('todo・ステータスを更新しました！');
     }).fail(function(err) {
       alert('todo・ステータスの更新に失敗しました。管理者に問い合わせてください');
       });

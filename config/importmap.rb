@@ -10,3 +10,5 @@ pin "@popperjs/core", to: "https://ga.jspm.io/npm:@popperjs/core@2.11.6/lib/inde
 pin "@nathanvda/cocoon", to: "@nathanvda--cocoon.js" # @1.2.14
 pin "thing", to: "thing.js"
 pin "updatething", to: "updatething.js"
+pin "newthing", to: "newthing.js"
+pin "creatething", to: "creatething.js"
