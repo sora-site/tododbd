@@ -2,7 +2,7 @@ class SpacesController < ApplicationController
   def new
     @space = Space.new
     @orner_id = current_user.id
-    @project_id = params[:project_id]
+    @project = Project.find(params[:project_id])
   end
 
   def create
