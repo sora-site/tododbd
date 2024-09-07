@@ -1,6 +1,6 @@
 class Space < ApplicationRecord
-  belongs_to :project
   has_many :space_users, dependent: :destroy
+  belongs_to :project
   has_many :users, through: :space_users
   has_many :messages
 

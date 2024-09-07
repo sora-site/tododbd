@@ -13,9 +13,16 @@
           <li class="nav-item dropdown">
             <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">シェアされている予定</a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <% share_space_count = 0%>
+              <% @spaces.each do |space| %>
+                <% if space.orner_id != current_user.id %>
+                <li><%= link_to space.space_name, space_path(space.id) ,class:"dropdown-item"%></li>
+                <% share_space_count += 1%>
+                <% end %>
+              <% end %>
+              <% if share_space_count == 0%>
+              <li class = "dropdown-item">共有されているタスクはありません</li>
+              <% end %>
             </ul>
           </li>
         </ul>
