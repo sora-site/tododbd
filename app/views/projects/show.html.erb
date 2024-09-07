@@ -36,13 +36,14 @@
         </td>
         <% task.things.each do |thing| %>
         <% countnum += 1%>
-        <td><%= countnum %></td>
-        <td><%= thing.thing_name %></td>
-        <td><%= thing.start_time.strftime("%H:%M") %></td>
-        <td><%= thing.end_time.strftime("%H:%M") %></td>
-        <td><%= Status.find(thing.status_id).name %></td>
-        <td><%= thing.memo%></td>
-        <td>
+        <% if thing.status_id == 2 %>
+          <td id = "gray_scale"><%= countnum %></td>
+          <td id = "gray_scale"><%= thing.thing_name %></td>
+          <td id = "gray_scale"><%= thing.start_time.strftime("%H:%M") %></td>
+          <td id = "gray_scale"><%= thing.end_time.strftime("%H:%M") %></td>
+          <td id = "gray_scale"><%= Status.find(thing.status_id).name %></td>
+          <td id = "gray_scale"><%= thing.memo%></td>
+          <td id = "gray_scale">
             <!-- Button trigger modal -->
             <button type="button" id="edit_thing" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#editModal"
             data-task-id=<%= thing.task_id %> data-id="<%= thing.id %>" data-name="<%= thing.thing_name %>" data-start="<%= thing.start_time %>" data-end="<%= thing.end_time %>"
@@ -50,6 +51,22 @@
              <%= image_tag 'pen-solid.png', size:'20x20' %>
             </button>
           </td>
+        <% else %>
+          <td><%= countnum %></td>
+          <td><%= thing.thing_name %></td>
+          <td><%= thing.start_time.strftime("%H:%M") %></td>
+          <td><%= thing.end_time.strftime("%H:%M") %></td>
+          <td><%= Status.find(thing.status_id).name %></td>
+          <td><%= thing.memo%></td>
+          <td>
+            <!-- Button trigger modal -->
+            <button type="button" id="edit_thing" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#editModal"
+            data-task-id=<%= thing.task_id %> data-id="<%= thing.id %>" data-name="<%= thing.thing_name %>" data-start="<%= thing.start_time %>" data-end="<%= thing.end_time %>"
+             data-memo="<%= thing.memo %>" data-status="<%= thing.status_id %>">
+             <%= image_tag 'pen-solid.png', size:'20x20' %>
+            </button>
+          </td>
+        <% end %>
       </tr>
         <% end %>
      <% end %>

@@ -63,6 +63,11 @@
   .table.table-hover.task th:first-child {
     width: 120px;
   }
+
+  #gray_scale {
+    background-color: gray;
+  }
+
 }
 
 /*############ newフォーム全体 ############*/
@@ -105,7 +110,8 @@
 
 /*######### project/showビュー #########*/
 .btn.btn-primary.edit {
-  --bs-btn-bg: none
+  --bs-btn-bg: none;
+  background-color: white;
 }
 
 

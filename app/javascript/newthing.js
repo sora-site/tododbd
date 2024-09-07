@@ -17,7 +17,7 @@ function get() {
     return time
   }
   //button要素をidで取得
-  const buttons = document.querySelectorAll(".btn.btn-primary.new");
+  const buttons = document.querySelectorAll(".btn.btn-light.new");
   if (!buttons) { return false; }
 
   // buttonをクリックした際イベント発火
