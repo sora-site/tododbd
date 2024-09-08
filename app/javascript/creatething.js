@@ -1,7 +1,14 @@
-function post (){
+function post() {
+  var shape = function (memo) {
+    if (memo == "") {
+      memo = '-';
+    }
+    var string = memo;
+    return string;
+  }
   //button要素をidで取得
   const button = document.getElementById("thingcreate");
-  if (!button){ return false;}
+  if (!button) { return false; }
   button.addEventListener('click', (e) => {
     e.preventDefault();
     // Id
@@ -14,31 +21,31 @@ function post (){
     const status = '4';
     debugger
     $.ajax({
-      type: 'POST', 
-      url: '/things', 
+      type: 'POST',
+      url: '/things',
       data: {
-        thing:{
-        thing_name: thingName,
-        start_time: startTime,
-        end_time: endTime,
-        memo: memo ,
-        status_id: status,
-        task_id:taskId
-       } 
+        thing: {
+          thing_name: thingName,
+          start_time: startTime,
+          end_time: endTime,
+          memo: shape(memo),
+          status_id: status,
+          task_id: taskId
+        }
       },
       headers: {
-        'X-CSRF-Token' : $('meta[name="csrf-token"]').attr('content')
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
       }
-    }).done(function() {
+    }).done(function () {
       // alert('todoを追加しました！');
-    }).fail(function(err) {
-      alert('todoの追加に失敗しました。管理者に問い合わせてください');
-      });
-        // モーダルを閉じる
-        $('#exampleModal').modal('hide');
-        // リロード
-        location.reload();
+    }).fail(function (err) {
+      alert('todoの追加に失敗しました。メモ以外の項目を入力するか\nそれでも解決しない場合は、管理者に問い合わせてください。');
+    });
+    // モーダルを閉じる
+    $('#exampleModal').modal('hide');
+    // リロード
+    location.reload();
   });
 };
- 
+
 window.addEventListener('turbo:load', post);
