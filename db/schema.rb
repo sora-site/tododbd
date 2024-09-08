@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_08_060839) do
-  create_table "messages", charset: "utf8", force: :cascade do |t|
-    t.string "content"
-    t.bigint "space_id", null: false
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["space_id"], name: "index_messages_on_space_id"
-    t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
+ActiveRecord::Schema[7.0].define(version: 2024_09_08_104454) do
   create_table "projects", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -83,8 +73,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_060839) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "messages", "spaces"
-  add_foreign_key "messages", "users"
   add_foreign_key "projects", "users"
   add_foreign_key "space_users", "spaces"
   add_foreign_key "space_users", "users"
