@@ -9,22 +9,22 @@
   }
 </script>
 
-<%= render "shared/header" %>
-<div class ="links_list">
-<% if @space.blank?%>
+<% if controller.controller_name == "projects"%>
+  <div class ="links_list">
+  <% if space.blank?%>
     <%=link_to 'shareboardを作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"space_button" %>
-    <% else %>
-      <%= link_to 'shareboard', space_path(@space_id ,project_id: params[:id], params_controller: params[:controller]), class:"space_button"%>
+  <% else %>
+      <%= link_to 'shareboard', space_path(space_id ,project_id: params[:id], params_controller: params[:controller]), class:"space_button"%>
   <% end %>
 
-    <% if @project.user_id == current_user.id%>
-      <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" ,onClick: "return Check()"%>
-    <% end %>
+  <% if project.user_id == current_user.id%>
+    <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" ,onClick: "return Check()"%>
+  <% end %>
 </div>
+<% end %>
 
 <div class="task-list">
-  <%= @project.project_name %>
-  <%= render "shared/error_messages", resource: @project %>
+  <%= render "shared/error_messages", resource: project %>
   <table class="table table-hover task">
     <tr>
       <th>タスク</th>
@@ -37,7 +37,7 @@
       <th>編集</th>
     </tr>
     <% countnum = 0%>
-    <% @tasks.each do |task| %>
+    <% tasks.each do |task| %>
       <tr>
         <td rowspan= "<%= task.things.count %>" >
           <button type="button" id="new_thing" class="btn btn-light new" data-bs-toggle="modal" data-bs-target="#newModal"
@@ -139,7 +139,7 @@
       <div class="modal-body">
           <form id="edit-form">
           <div class="form-group">
-            <%= form_with model: @project, remote: true do |form| %>
+            <%= form_with model: project, remote: true do |form| %>
                <%= form.label :thing_name,"todo:",class: "col-form-label" %>
                <%= form.text_field :thing_name ,class: "form-control" ,id: "new_thing_name"%>
                <%= form.label :start_time,"開始時刻:",class: "col-form-label" %>

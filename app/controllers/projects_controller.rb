@@ -33,7 +33,6 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @tasks = Task.where(project_id: @project.id).order('created_at ASC')
-    @things = Thing.joins(:task).order('start_time DESC')
     @space = Space.where(project_id: params[:id])
     return if @space.nil?
 

@@ -20,7 +20,6 @@ class SpacesController < ApplicationController
     space = Space.find(params[:id])
     @project = Project.find(space.project_id)
     @tasks = Task.where(project_id: @project.id).order('created_at ASC')
-    @things = Thing.joins(:task_id).order('start_time DESC')
   end
 
   private
