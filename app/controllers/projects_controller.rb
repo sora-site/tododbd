@@ -16,12 +16,11 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @day_param = params[:project][:registered_date].to_date
     if @project.save
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
-      @day_param = params[:project][:registered_date].to_date
-
     end
   end
 
