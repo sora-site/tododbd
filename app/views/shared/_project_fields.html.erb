@@ -12,13 +12,13 @@
 <% if controller.controller_name == "projects"%>
   <div class ="links_list">
   <% if space.blank?%>
-    <%=link_to 'shareboardを作成', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"space_button" %>
+    <%=link_to 'タスクをシェアしよう', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"space_button" %>
   <% else %>
       <%= link_to 'shareboard', space_path(space_id ,project_id: params[:id], params_controller: params[:controller]), class:"space_button"%>
   <% end %>
 
   <% if project.user_id == current_user.id%>
-    <%= link_to "プロジェクトを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" ,onClick: "return Check()"%>
+    <%= link_to "タスクを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" ,onClick: "return Check()"%>
   <% end %>
 </div>
 <% end %>
@@ -153,14 +153,6 @@
                   <%= form.submit "新規登録", class: "btn btn-primary" ,id: "thingcreate" %>
                </div>
             <% end %>
-            <%# <label for="item-name" class="col-form-label">todo:</label>
-            <input type="text" class="form-control" id="thing_name" name="thing_name">
-            <label for="item-name" class="col-form-label">開始時刻:</label>
-            <input type="time" class="form-control" id="start_time" name="start_time">
-            <label for="item-name" class="col-form-label">終了時刻:</label>
-            <input type="time" class="form-control" id="end_time" name="end_time">
-            <label for="item-name" class="col-form-label">メモ:</label>
-            <input type="text" class="form-control" id="memo" name="memo"> %>
           </div>
       </div>
       
