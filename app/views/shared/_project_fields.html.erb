@@ -99,7 +99,7 @@
             <input type="hidden" class="form-control" id="task_id" name="task_id">
             <input type="hidden" class="form-control" id="thing_id" name="thing_id">
             <label for="item-name" class="col-form-label">todo:</label>
-            <input type="text" class="form-control" id="thing_name" name="thing_name">
+            <input type="text" class="form-control" id="thing_name" name="thing_name" placeholder="30文字以内で入力(入力必須)">
             <label for="item-name" class="col-form-label">開始時刻:</label>
             <input type="time" class="form-control" id="start_time" name="start_time">
             <label for="item-name" class="col-form-label">終了時刻:</label>
@@ -116,7 +116,7 @@
               </select>
             </div>
             <label for="item-name" class="col-form-label">メモ:</label>
-            <input type="text" class="form-control" id="memo" name="memo">
+            <input type="text" class="form-control" id="memo" name="memo" placeholder="50文字以内で入力">
           </div>
       </div>
       <div class="modal-footer">
@@ -141,13 +141,13 @@
           <div class="form-group">
             <%= form_with model: project, remote: true do |form| %>
                <%= form.label :thing_name,"todo:",class: "col-form-label" %>
-               <%= form.text_field :thing_name ,class: "form-control" ,id: "new_thing_name"%>
+               <%= form.text_field :thing_name ,class: "form-control" ,id: "new_thing_name", placeholder: "30文字以内で入力(入力必須)"%>
                <%= form.label :start_time,"開始時刻:",class: "col-form-label" %>
                <%= form.time_field :start_time ,class: "form-control" ,id: "new_start_time"%>
                <%= form.label :end_time,"終了時刻:",class: "col-form-label" %>
                <%= form.time_field :end_time ,class: "form-control" ,id: "new_end_time"%>
                <%= form.label :memo,"メモ:",class: "col-form-label" %>
-               <%= form.text_field :memo ,class: "form-control" ,id: "new_memo"%>
+               <%= form.text_field :memo ,class: "form-control" ,id: "new_memo", placeholder: "50文字以内で入力"%>
                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                   <%= form.submit "新規登録", class: "btn btn-primary" ,id: "thingcreate" %>

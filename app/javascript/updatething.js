@@ -36,7 +36,7 @@ function update() {
       }
     }).done(function () {
       // alert('todo・ステータスを更新しました！');
-    }).fail(function (err) {
+    }).fail(function () {
       alert('todoの更新に失敗しました。メモ以外の項目を入力するか\nそれでも解決しない場合は、管理者に問い合わせてください。');
     });
     // モーダルを閉じる
