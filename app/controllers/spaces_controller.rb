@@ -1,5 +1,6 @@
 class SpacesController < ApplicationController
-  before_action :share_space_params, only: [:new, :show]
+  before_action :move_to_session
+  before_action :share_space_params
   def new
     @space = Space.new
     @orner_id = current_user.id
@@ -9,7 +10,7 @@ class SpacesController < ApplicationController
   def create
     @space = Space.new(space_params)
     if @space.save
-      redirect_to root_path
+      redirect_to project_path(id: params[:space][:project_id])
     else
       render :new, status: :unprocessable_entity
     end
@@ -25,11 +26,17 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    # params.require(:space).permit(:space_name, :orner_id, :project_id, user_ids: [])
-    params.permit(:space_name, :orner_id, :project_id, user_ids: [])
+    params.require(:space).permit(:space_name, :orner_id, :project_id, user_ids: [])
+    # params.permit(:space_name, :orner_id, :project_id, user_ids: [])
   end
 
   def share_space_params
     @spaces = Space.joins(:space_users).where(space_users: { user_id: current_user.id })
+  end
+
+  def move_to_session
+    return if user_signed_in?
+
+    redirect_to new_user_session_path
   end
 end

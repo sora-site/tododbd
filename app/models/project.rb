@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   # バリデーション
   with_options presence: true do
     validates :project_name, length: { maximum: 30 }
+    validates :tasks
   end
 
   accepts_nested_attributes_for :tasks,

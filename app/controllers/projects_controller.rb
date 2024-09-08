@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
-  before_action :share_space_params, only: [:index, :new, :show]
+  before_action :move_to_session
+  before_action :share_space_params, only: [:index, :new, :show, :create]
   def index
     @projects = Project.where(user_id: current_user.id)
   end
@@ -19,6 +20,8 @@ class ProjectsController < ApplicationController
       redirect_to root_path
     else
       render :new, status: :unprocessable_entity
+      @day_param = params[:project][:registered_date].to_date
+
     end
   end
 
@@ -29,7 +32,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    # @url = set_url
     @project = Project.find(params[:id])
     @tasks = Task.where(project_id: @project.id).order('created_at ASC')
     @things = Thing.joins(:task).order('start_time DESC')
@@ -51,5 +53,11 @@ class ProjectsController < ApplicationController
 
   def share_space_params
     @spaces = Space.joins(:space_users).where(space_users: { user_id: current_user.id })
+  end
+
+  def move_to_session
+    return if user_signed_in?
+
+    redirect_to new_user_session_path
   end
 end

@@ -1,10 +1,9 @@
 <%= render "shared/header" %>
 <div class='chat-room-form'>
   <h1>あなたのタスクをシェア</h1>
-  <%=form_with model: @space, local: true do |f|%>
   <%= render "shared/error_messages", resource: @space %>
-      
-      <div class='space-form'> 
+  <div class='space-form'> 
+  <%= form_with model: @space, local: true do |f| %>
         <table class="table table-hover task">
            <tr>
             <th>選択</th>
@@ -21,17 +20,11 @@
             <% end %>
           <% end %>
         </table>
-        <input name="space[user_ids][]" type="hidden" value=<%= current_user.id %>>
-        <input name="space[orner_id]" type="hidden" value=<%= current_user.id %>>
-        <input name="space[project_id]" type="hidden" value=<%= @project.id %>>
-        <input name="space[space_name]" type="hidden" value=<%= @project.project_name %>>
-      </div>
-    </div>
-    <div class='chat-room-form__field'>
-      <div class='chat-room-form__field--left'></div>
-      <div class='chat-room-form__field--right'>
+        <%= f.hidden_field :user_ids, multiple: true, value: current_user.id %>
+        <%= f.hidden_field :orner_id, value: current_user.id %>
+        <%= f.hidden_field :project_id, value: @project.id %>
+        <%= f.hidden_field :space_name, value: @project.project_name %>
         <%= f.submit class: 'chat-room-form__action-btn'%>
-      </div>
-    </div>
   <% end %>
+  </div>
 </div>
