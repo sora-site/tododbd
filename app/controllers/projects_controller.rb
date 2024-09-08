@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :share_space_params, only: [:index, :new, :show]
   def index
     @projects = Project.where(user_id: current_user.id)
   end
@@ -48,9 +49,7 @@ class ProjectsController < ApplicationController
           .merge(user_id: current_user.id)
   end
 
-  # def set_url
-  #   url = request.referer
-  #   url ||= 1
-  #   url.to_s
-  # end
+  def share_space_params
+    @spaces = Space.joins(:space_users).where(space_users: { user_id: current_user.id })
+  end
 end

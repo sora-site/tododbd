@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   # before_action :basic_auth
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :space_params, unless: :devise_controller?
 
   private
 
@@ -14,9 +13,5 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :birthday])
-  end
-
-  def space_params
-    @spaces = Space.joins(:space_users).where(space_users: { user_id: current_user.id })
   end
 end
