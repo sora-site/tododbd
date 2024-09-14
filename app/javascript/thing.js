@@ -43,7 +43,7 @@ buttons.forEach(function(button) {
       url: '/things/' + thingId+ '/edit', 
       // dataType: 'html',
       // async: true,
-      data: { id : thingId },
+      // data: { id : thingId },
       success: function() {
         // Successの処理(モーダル画面のvalueに値を挿入)
         $('#task_id').val(taskId);

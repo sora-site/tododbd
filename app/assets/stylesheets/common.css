@@ -8,6 +8,12 @@ html {
   scroll-behavior: smooth;
 }
 
+header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
 .light-blue-btn {
   width: 100%;
   background: #8aa1e7;
@@ -60,4 +66,8 @@ html {
   font-size: 1.3vw;
   list-style: circle;
   color: rgb(182, 48, 0);
+}
+
+.fa-trash-alt::before {
+  text-decoration: none;
 }

@@ -11,21 +11,6 @@
     word-wrap: break-word;
   }
 
-  .table.table-hover.task {
-    border-collapse: collapse;
-    border: 1px solid rgba(0, 0, 0, .1);
-    table-layout: fixed;
-    width: 100%;
-  }
-
-  .table.table-hover.task th,
-  .table.table-hover.task td {
-    border: 1px solid rgba(0, 0, 0, .1);
-    padding: .6em;
-    text-align: center;
-    background: #fff;
-  }
-
   .table.table-hover.task th {
     background: #3F51B5;
     color: #fff;
@@ -35,4 +20,5 @@
   .table.table-hover.task th:first-child {
     width: 120px;
   }
+
 }

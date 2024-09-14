@@ -1,15 +1,15 @@
 <div class="nested-fields task-field">
-    <%= link_to_add_association "やることを追加", f, :things, class: 'add_todo',
+    <%= link_to_add_association "#{icon 'fas', 'pencil'}".html_safe, f, :things, class: 'add_todo',
     partial: 'shared/thing_fields', 
     data: {
             association_insertion_method: 'append'
           }%>
     <%= f.label "タスク" %>
     <%= f.text_field :task_name %>
-    <%= link_to_remove_association "タスクを削除", f %>
+    <%= link_to_remove_association  "#{icon 'fas', 'trash-alt'}".html_safe, f %>
     <div class="things-header">
         <p class="head todo">やること</p>
-        <p class="head description">説明</p>
+        <p class="head description">補足</p>
         <p class="head start">開始時刻</p>
         <p class="head end">終了時刻</p>
     </div>

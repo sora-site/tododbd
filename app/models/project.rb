@@ -1,6 +1,6 @@
 class Project < ApplicationRecord
   has_many :tasks, dependent: :destroy
-  has_one :space
+  has_one :space, dependent: :destroy
 
   def start_time
     registered_date
@@ -9,6 +9,7 @@ class Project < ApplicationRecord
   # バリデーション
   with_options presence: true do
     validates :project_name, length: { maximum: 30 }
+    validates :tasks
   end
 
   accepts_nested_attributes_for :tasks,

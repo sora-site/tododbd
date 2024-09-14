@@ -5,6 +5,7 @@ class Task < ApplicationRecord
   # バリデーション
   with_options presence: true do
     validates :task_name, length: { maximum: 20 }
+    validates :things
   end
 
   accepts_nested_attributes_for :things,

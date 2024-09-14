@@ -1,4 +1,6 @@
 class ProjectsController < ApplicationController
+  before_action :move_to_session
+  before_action :share_space_params, only: [:index, :new, :show, :create]
   def index
     @projects = Project.where(user_id: current_user.id)
   end
@@ -14,6 +16,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @day_param = params[:project][:registered_date].to_date
     if @project.save
       redirect_to root_path
     else
@@ -28,10 +31,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    # @url = set_url
     @project = Project.find(params[:id])
-    @tasks = Task.where(project_id: params[:id]).order('updated_at DESC')
-    @things = Thing.joins(:task_id).order('start_time DESC')
+    @tasks = Task.where(project_id: @project.id).order('created_at ASC')
     @space = Space.where(project_id: params[:id])
     return if @space.nil?
 
@@ -48,9 +49,13 @@ class ProjectsController < ApplicationController
           .merge(user_id: current_user.id)
   end
 
-  # def set_url
-  #   url = request.referer
-  #   url ||= 1
-  #   url.to_s
-  # end
+  def share_space_params
+    @spaces = Space.joins(:space_users).where(space_users: { user_id: current_user.id })
+  end
+
+  def move_to_session
+    return if user_signed_in?
+
+    redirect_to new_user_session_path
+  end
 end

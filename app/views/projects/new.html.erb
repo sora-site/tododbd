@@ -1,15 +1,16 @@
+<%= render "shared/header" %>
 <div class="project-forms">
   <div class="row g-3" id="project-form">
-    <%= form_with model: @project, local: true do |f| %>
     <%= render "shared/error_messages", resource: @project %>
+    <%= form_with model: @project, local: true do |f| %>
+      <%= f.hidden_field :registered_date ,value: @day_param%>
       <div class="col-12">
       <%# <% コントローラーから受け取った日付情報を年月日に変換して表示 %>
-        <label for="exampleFormControlInput1" class="form-label"><%= "#{@day_param&.strftime("%Y年%m月%d日")}のプロジェクト名" %></label>
-          <%= f.hidden_field :registered_date ,value: @day_param%>
-          <%= f.text_field :project_name , class: "form-control form-control-lg", id: "exampleFormControlInput1" ,placeholder:"例)：3/13のタスク(ルームのタイトルにもなります)"%>
+        <label for="exampleFormControlInput1" class="form-label"><%= "#{@day_param&.strftime("%Y年%m月%d日")}" %></label>
+          <%= f.text_field :project_name , class: "form-control form-control-lg", id: "exampleFormControlInput1" ,placeholder:"例)：08月29日・買い物(日付とタスク内容が分かるように入力)"%>
       </div>
       <div class="links">
-        <%= link_to_add_association "タスクを追加", f, :tasks, class: 'add_tasks',
+        <%= link_to_add_association "#{icon 'fas', 'plus'}".html_safe, f, :tasks, class: 'add_tasks',
           data: {
           association_insertion_node: '#task-form',
           association_insertion_method: 'append'
@@ -21,7 +22,7 @@
         <% end %>
       </div>
       <div class="submit-button">
-        <%= f.submit "スケジュールを登録"%>
+        <%= f.submit "登録"%>
       </div>
     <% end %>
   </div>

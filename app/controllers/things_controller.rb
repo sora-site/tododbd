@@ -15,6 +15,20 @@ class ThingsController < ApplicationController
     end
   end
 
+  def new
+    @things = Thing.new
+    # projectと紐づくtasks.thingsをビルド
+  end
+
+  def create
+    @thing = Thing.new(thing_params)
+    if @thing.save
+      render json: @thing
+    else
+      render json: @thing.errors, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def thing_params

@@ -1,0 +1,168 @@
+<script type="text/javascript">
+  function Check(){
+      var checked = confirm("設定したタスクを削除します。本当によろしいですか？");
+      if (checked == true) {
+          return true;
+      } else {
+          return false;
+      }
+  }
+</script>
+
+<% if controller.controller_name == "projects"%>
+  <div class ="links_list">
+  <% if space.blank?%>
+    <%=link_to 'タスクをシェアしよう', new_space_path(project_id: params[:id], params_controller: params[:controller]), class:"space_button" %>
+  <% else %>
+      <%= link_to 'shareboard', space_path(space_id ,project_id: params[:id], params_controller: params[:controller]), class:"space_button"%>
+  <% end %>
+
+  <% if project.user_id == current_user.id%>
+    <%= link_to "タスクを削除", project_path, data: {turbo_method: :delete}, class:"item-destroy" ,onClick: "return Check()"%>
+  <% end %>
+</div>
+<% end %>
+
+<div class="task-list">
+  <%= render "shared/error_messages", resource: project %>
+  <table class="table table-hover task">
+    <tr>
+      <th>タスク</th>
+      <th>seqNo</th>
+      <th>todo</th>
+      <th>開始予定</th>
+      <th>終了予定</th>
+      <th>ステータス</th>
+      <th>補足</th>
+      <th>編集</th>
+    </tr>
+    <% countnum = 0%>
+    <% tasks.each do |task| %>
+      <tr>
+        <td rowspan= "<%= task.things.count %>" >
+          <button type="button" id="new_thing" class="btn btn-light new" data-bs-toggle="modal" data-bs-target="#newModal"
+          data-task-id=<%= task.id %>>
+             <%= task.task_name %>
+            </button>
+        </td>
+        <% task.things.each do |thing| %>
+        <% countnum += 1%>
+        <% if thing.status_id == 2 || thing.status_id == 5%>
+          <td id = "gray_scale"><%= countnum %></td>
+          <td id = "gray_scale"><%= thing.thing_name %></td>
+          <td id = "gray_scale"><%= thing.start_time.strftime("%H:%M") %></td>
+          <td id = "gray_scale"><%= thing.end_time.strftime("%H:%M") %></td>
+          <td id = "gray_scale"><%= Status.find(thing.status_id).name %></td>
+          <td id = "gray_scale"><%= thing.memo%></td>
+          <td id = "gray_scale">
+            <!-- Button trigger modal -->
+            <button type="button" id="edit_thing" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#editModal"
+            data-task-id=<%= thing.task_id %> data-id="<%= thing.id %>" data-name="<%= thing.thing_name %>" data-start="<%= thing.start_time %>" data-end="<%= thing.end_time %>"
+             data-memo="<%= thing.memo %>" data-status="<%= thing.status_id %>">
+             <%= image_tag 'pen-solid.png', size:'20x20' %>
+            </button>
+          </td>
+        <% else %>
+          <td><%= countnum %></td>
+          <td><%= thing.thing_name %></td>
+          <td><%= thing.start_time.strftime("%H:%M") %></td>
+          <td><%= thing.end_time.strftime("%H:%M") %></td>
+          <td><%= Status.find(thing.status_id).name %></td>
+          <td><%= thing.memo%></td>
+          <td>
+            <!-- Button trigger modal -->
+            <button type="button" id="edit_thing" class="btn btn-primary edit" data-bs-toggle="modal" data-bs-target="#editModal"
+            data-task-id=<%= thing.task_id %> data-id="<%= thing.id %>" data-name="<%= thing.thing_name %>" data-start="<%= thing.start_time %>" data-end="<%= thing.end_time %>"
+             data-memo="<%= thing.memo %>" data-status="<%= thing.status_id %>">
+             <%= image_tag 'pen-solid.png', size:'20x20' %>
+            </button>
+          </td>
+        <% end %>
+      </tr>
+        <% end %>
+     <% end %>
+  </table>
+</div> 
+
+
+<!-- editModal -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">更新</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form id="edit-form">
+          <div class="form-group">
+            <input type="hidden" class="form-control" id="task_id" name="task_id">
+            <input type="hidden" class="form-control" id="thing_id" name="thing_id">
+            <label for="item-name" class="col-form-label">todo:</label>
+            <input type="text" class="form-control" id="thing_name" name="thing_name" placeholder="30文字以内で入力(入力必須)">
+            <label for="item-name" class="col-form-label">開始時刻:</label>
+            <input type="time" class="form-control" id="start_time" name="start_time">
+            <label for="item-name" class="col-form-label">終了時刻:</label>
+            <input type="time" class="form-control" id="end_time" name="end_time">
+            <div class="form-group">
+              <label for="item-category" class="col-form-label">ステータス:</label>
+              <select class="form-control" id="status">
+                <option value="1">---</option>
+                <option value="2">完了</option>
+                <option value="3">実施中</option>
+                <option value="4">未着手</option>
+                <option value="5">対応不要</option>
+                <option value="6">スタック（実施不可）</option>
+              </select>
+            </div>
+            <label for="item-name" class="col-form-label">メモ:</label>
+            <input type="text" class="form-control" id="memo" name="memo" placeholder="50文字以内で入力">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="thingedit">変更を適用</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- newModal -->
+<div class="modal fade" id="newModal" tabindex="-1" aria-labelledby="newModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="newModalLabel">新規登録</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+          <form id="edit-form">
+          <div class="form-group">
+            <%= form_with model: project, remote: true do |form| %>
+               <%= form.label :thing_name,"todo:",class: "col-form-label" %>
+               <%= form.text_field :thing_name ,class: "form-control" ,id: "new_thing_name", placeholder: "30文字以内で入力(入力必須)"%>
+               <%= form.label :start_time,"開始時刻:",class: "col-form-label" %>
+               <%= form.time_field :start_time ,class: "form-control" ,id: "new_start_time"%>
+               <%= form.label :end_time,"終了時刻:",class: "col-form-label" %>
+               <%= form.time_field :end_time ,class: "form-control" ,id: "new_end_time"%>
+               <%= form.label :memo,"メモ:",class: "col-form-label" %>
+               <%= form.text_field :memo ,class: "form-control" ,id: "new_memo", placeholder: "50文字以内で入力"%>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <%= form.submit "新規登録", class: "btn btn-primary" ,id: "thingcreate" %>
+               </div>
+            <% end %>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<a class="pagetop" href="#">
+  <div class="pagetop__arrow">
+     <%= image_tag 'angle-up-solid.png'%>
+  </div>
+</a>

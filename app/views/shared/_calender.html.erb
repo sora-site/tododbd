@@ -1,18 +1,23 @@
-<%= month_calendar events: collection do |date, project| %>
 <% project_date = '' %>
 <% project_params = collection %>
+<% today = Time.zone.today %>
+<%= month_calendar events: collection do |date, project| %>
 
   <% project_params.each do |project|%>
-  <% project_date = project.registered_date %>
-
+    <% project_date = project.registered_date %>
     <% if project_date == date %>
-      <%= link_to project_path(project.id) do %>
-        <%= date.day %>
-        <%= project.project_name %>
-      <% end %>
-      <% break %>
+      <div class="project_path">
+        <%= link_to project_path(project.id) do %>
+          <div class = "date_day">
+            <%= date.day %>
+          </div>
+          <div class = "project_project_name">
+            <%= project.project_name %>
+          </div>
+        <% end %>
+      </div>
+        <% break %>
     <% end %>
-
   <% end %>
     
     <% unless project_date == date %>
