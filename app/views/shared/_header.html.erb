@@ -16,7 +16,7 @@
               <% share_space_count = 0%>
               <% @spaces.zip(@project_param) do |space, project| %>
                 <% if space.orner_id != current_user.id %>
-                <li><div class="space-link"><span class="registered-date"><%= project.registered_date&.strftime("%m/%d")%></span><%= link_to space.space_name, space_path(space.id) ,class:"dropdown-item"%></div></li>
+                <li><div class="space-link"><span class="registered-date"><%= project.registered_date&.strftime("%m/%d")%></span><span class="orner_name"><%= space.orner_name%></span><%= link_to space.space_name, space_path(space.id) ,class:"dropdown-item"%></div></li>
                 <% share_space_count += 1%>
                 <% end %>
               <% end %>

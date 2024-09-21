@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_09_08_104454) do
+ActiveRecord::Schema[7.0].define(version: 2024_09_21_072318) do
   create_table "projects", charset: "utf8", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -31,10 +31,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_09_08_104454) do
 
   create_table "spaces", charset: "utf8", force: :cascade do |t|
     t.string "space_name", null: false
-    t.integer "orner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "project_id"
+    t.string "orner_name", null: false
+    t.integer "orner_id", null: false
     t.index ["project_id"], name: "index_spaces_on_project_id"
   end
 
