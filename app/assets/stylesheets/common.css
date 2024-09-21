@@ -97,3 +97,9 @@ header {
   color: #930403;
   border: solid 1px #930403;
 }
+
+.under-nav{
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
+}
