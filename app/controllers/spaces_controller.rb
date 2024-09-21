@@ -25,12 +25,12 @@ class SpacesController < ApplicationController
   private
 
   def space_params
-    params.require(:space).permit(:space_name, :orner_id, :project_id, user_ids: [])
-    # params.permit(:space_name, :orner_id, :project_id, user_ids: [])
+    params.require(:space).permit(:space_name, :orner_id, :orner_name, :project_id, user_ids: [])
   end
 
   def share_space_params
     @spaces = Space.joins(:space_users).where(space_users: { user_id: current_user.id })
+    @project_param = Project.joins(:space).select('projects.registered_date, projects.id')
   end
 
   def move_to_session

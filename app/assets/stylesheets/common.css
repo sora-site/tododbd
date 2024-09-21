@@ -46,7 +46,7 @@ header {
   padding: 0px;
 }
 
-.login{
+.login {
   margin-right: 18px;
 }
 
@@ -70,4 +70,36 @@ header {
 
 .fa-trash-alt::before {
   text-decoration: none;
+}
+
+.space-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.space-link a{
+  width: 100%;
+  display: flex;
+}
+
+.registered-date{
+  font-size: 10px;
+}
+
+.orner_name{
+  font-size: 10px;
+  margin-left: 5px
+}
+
+.flash-message.alert {
+  background-color: #ffd4d1;
+  color: #930403;
+  border: solid 1px #930403;
+}
+
+.under-nav{
+  width: 100vw;
+  display: flex;
+  justify-content: space-between;
 }

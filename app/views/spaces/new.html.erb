@@ -22,6 +22,7 @@
         </table>
         <%= f.hidden_field :user_ids, multiple: true, value: current_user.id %>
         <%= f.hidden_field :orner_id, value: current_user.id %>
+        <%= f.hidden_field :orner_name, value: current_user.nickname %>
         <%= f.hidden_field :project_id, value: @project.id %>
         <%= f.hidden_field :space_name, value: @project.project_name %>
         <%= f.submit class: 'chat-room-form__action-btn'%>

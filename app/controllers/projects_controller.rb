@@ -3,6 +3,13 @@ class ProjectsController < ApplicationController
   before_action :share_space_params, only: [:index, :new, :show, :create]
   def index
     @projects = Project.where(user_id: current_user.id)
+    @projects.each do |project|
+      next unless project.registered_date < Time.zone.today
+
+      date = project.registered_date
+      flash[:alert] =
+        "過去の予定が残っています。作業が完了していれば、予定を削除してください。(#{date})"
+    end
   end
 
   def new
@@ -51,6 +58,7 @@ class ProjectsController < ApplicationController
 
   def share_space_params
     @spaces = Space.joins(:space_users).where(space_users: { user_id: current_user.id })
+    @project_param = Project.joins(:space).select('projects.registered_date, projects.id')
   end
 
   def move_to_session
