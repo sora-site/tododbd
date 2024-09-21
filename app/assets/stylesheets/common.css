@@ -46,7 +46,7 @@ header {
   padding: 0px;
 }
 
-.login{
+.login {
   margin-right: 18px;
 }
 
@@ -70,4 +70,19 @@ header {
 
 .fa-trash-alt::before {
   text-decoration: none;
+}
+
+.space-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.space-link a{
+  width: 100%;
+  display: flex;
+}
+
+.registered-date{
+  font-size: 10px;
 }

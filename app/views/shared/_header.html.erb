@@ -14,9 +14,9 @@
             <a class="nav-link active dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">シェアされている予定</a>
             <ul class="dropdown-menu">
               <% share_space_count = 0%>
-              <% @spaces.each do |space| %>
+              <% @spaces.zip(@project_param) do |space, project| %>
                 <% if space.orner_id != current_user.id %>
-                <li><%= link_to space.space_name, space_path(space.id) ,class:"dropdown-item"%></li>
+                <li><div class="space-link"><span class="registered-date"><%= project.registered_date&.strftime("%m/%d")%></span><%= link_to space.space_name, space_path(space.id) ,class:"dropdown-item"%></div></li>
                 <% share_space_count += 1%>
                 <% end %>
               <% end %>

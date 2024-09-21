@@ -51,6 +51,8 @@ class ProjectsController < ApplicationController
 
   def share_space_params
     @spaces = Space.joins(:space_users).where(space_users: { user_id: current_user.id })
+    @project_param = Project.joins(:space).select('projects.registered_date, projects.id')
+    # @project_param = @projects.map { |project| [project.id, project.registered_date] }.to_h
   end
 
   def move_to_session
