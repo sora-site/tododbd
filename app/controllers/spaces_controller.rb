@@ -26,7 +26,6 @@ class SpacesController < ApplicationController
 
   def space_params
     params.require(:space).permit(:space_name, :orner_id, :orner_name, :project_id, user_ids: [])
-    # params.permit(:space_name, :orner_id, :project_id, user_ids: [])
   end
 
   def share_space_params
