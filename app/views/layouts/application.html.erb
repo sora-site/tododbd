@@ -13,7 +13,9 @@
 
   <body>
      <% flash.each do |message_type, message| %>
+     <% if message_type == alert%>
      <div class="flash-message <%= message_type %>"><%= message %></div>
+     <% end %>
      <% end %>
     <%= yield %>
   </body>
