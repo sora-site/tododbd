@@ -22,11 +22,12 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    today = Time.zone.today
     @project = Project.new(project_params)
     @day_param = params[:project][:registered_date].to_date
-    if @project.save
+    if today <= @day_param && @project.save
       redirect_to root_path
-    elsif Time.zone.today > @day_param
+    elsif today > @day_param
       flash[:alert] =
         '昨日日付で登録しようとしています。正しい日付で登録してください。'
       redirect_to root_path
